@@ -2,17 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_camara" android:icon="@android:drawable/ic_menu_camera"
-            android:title="Import" />
-        <item android:id="@+id/nav_gallery" android:icon="@android:drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item android:id="@+id/nav_slideshow" android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item android:id="@+id/nav_manage" android:icon="@android:drawable/ic_menu_manage"
-            android:title="Tools" />
+        <item android:id="@+id/navAddNewCar" android:icon="@android:drawable/ic_menu_camera"
+            android:title="Add new car" />
+        <item android:id="@+id/navViewYourCars" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="View your cars" />
+        <item android:id="@+id/navViewEvents" android:icon="@android:drawable/ic_menu_slideshow"
+            android:title="View future events" />
+        <item android:id="@+id/navSettings" android:icon="@android:drawable/ic_menu_manage"
+            android:title="Settings" />
+
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Share this app!">
         <menu>
             <item android:id="@+id/nav_share" android:icon="@android:drawable/ic_menu_share"
                 android:title="Share" />
