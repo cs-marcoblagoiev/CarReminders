@@ -1,5 +1,8 @@
 package com.example.abcd.carreminders;
 
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -26,15 +30,15 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //edittext's
-        EditText editTextLicencePlate = (EditText) findViewById(R.id.editTextLicencePlate);
+        //edittexts
+        final EditText editTextLicencePlate = (EditText) findViewById(R.id.editTextLicencePlate);
         EditText editTextBrand = (EditText) findViewById(R.id.editTextBrand);
-        EditText editTextInsurance = (EditText) findViewById(R.id.editTextInsurance);
-        EditText editTextInspection = (EditText) findViewById(R.id.editTextInspection);
-        EditText editTextTax = (EditText) findViewById(R.id.editTextTax);
-        EditText editTextFire = (EditText) findViewById(R.id.editTextFire);
-        EditText editTextMedical = (EditText) findViewById(R.id.editTextMedical);
-        EditText editTextRate = (EditText) findViewById(R.id.editTextRate);
+        final EditText editTextInsurance = (EditText) findViewById(R.id.editTextInsurance);
+        final EditText editTextInspection = (EditText) findViewById(R.id.editTextInspection);
+        final EditText editTextTax = (EditText) findViewById(R.id.editTextTax);
+        final EditText editTextFire = (EditText) findViewById(R.id.editTextFire);
+        final EditText editTextMedical = (EditText) findViewById(R.id.editTextMedical);
+        final EditText editTextRate = (EditText) findViewById(R.id.editTextRate);
 
         //button
         Button addButton = (Button)findViewById(R.id.addButton);
@@ -52,6 +56,73 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //insurance click listener
+        editTextInsurance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //use mainactivity.this instead of getApplicationContext, otherwise: Unable to add window -- token null is not for an application
+                MyEditTextDatePicker licenceEdit = new MyEditTextDatePicker(MainActivity.this, editTextInsurance);
+                licenceEdit.onClick(v);
+                licenceEdit.updateDisplay();
+            }
+        });
+
+        //inspection click listener
+        editTextInspection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //use mainactivity.this instead of getApplicationContext, otherwise: Unable to add window -- token null is not for an application
+                MyEditTextDatePicker licenceEdit = new MyEditTextDatePicker(MainActivity.this, editTextInspection );
+                licenceEdit.onClick(v);
+                licenceEdit.updateDisplay();
+            }
+        });
+
+        //tax click listener
+        editTextTax.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //use mainactivity.this instead of getApplicationContext, otherwise: Unable to add window -- token null is not for an application
+                MyEditTextDatePicker licenceEdit = new MyEditTextDatePicker(MainActivity.this, editTextTax );
+                licenceEdit.onClick(v);
+                licenceEdit.updateDisplay();
+            }
+        });
+
+        //fire click listener
+        editTextFire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //use mainactivity.this instead of getApplicationContext, otherwise: Unable to add window -- token null is not for an application
+                MyEditTextDatePicker licenceEdit = new MyEditTextDatePicker(MainActivity.this, editTextFire );
+                licenceEdit.onClick(v);
+                licenceEdit.updateDisplay();
+            }
+        });
+
+        //medical click listener
+        editTextMedical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //use mainactivity.this instead of getApplicationContext, otherwise: Unable to add window -- token null is not for an application
+                MyEditTextDatePicker licenceEdit = new MyEditTextDatePicker(MainActivity.this, editTextMedical );
+                licenceEdit.onClick(v);
+                licenceEdit.updateDisplay();
+            }
+        });
+
+        //rate click listener
+        editTextRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //use mainactivity.this instead of getApplicationContext, otherwise: Unable to add window -- token null is not for an application
+                MyEditTextDatePicker licenceEdit = new MyEditTextDatePicker(MainActivity.this, editTextRate );
+                licenceEdit.onClick(v);
+                licenceEdit.updateDisplay();
+            }
+        });
+
+
         //button listener
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +134,7 @@ public class MainActivity extends AppCompatActivity
                 // find the radiobutton by returned id
                 RadioButton selectedRadioButton = (RadioButton) findViewById(selectedId);
 
-                Log.d("DEBUG", "Selected car type is "+ selectedRadioButton.getText());
+                Log.d("DEBUG", "Selected car type is " + selectedRadioButton.getText());
             }
         });
 
@@ -124,5 +195,46 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    //class borrowed from http://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext
+    public class MyEditTextDatePicker  implements View.OnClickListener, OnDateSetListener {
+        EditText _editText;
+        private int _day;
+        private int _month;
+        private int _birthYear;
+        private Context _context;
+
+        public MyEditTextDatePicker(Context context, EditText editTextViewID)
+        {
+            //Activity act = (Activity)context;
+            this._editText = editTextViewID;
+            this._editText.setOnClickListener(this);
+            this._context = context;
+        }
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            _birthYear = year;
+            _month = monthOfYear;
+            _day = dayOfMonth;
+            updateDisplay();
+        }
+        @Override
+        public void onClick(View v) {
+            //TODO make the picker display todays date
+            DatePickerDialog dialog =  new DatePickerDialog(_context, this, 2015, 10, 20);
+            dialog.show();
+
+        }
+
+        // updates the date in the birth date EditText
+        private void updateDisplay() {
+
+            _editText.setText(new StringBuilder()
+                    // Month is 0 based so add 1
+                    .append(_day).append("/").append(_month + 1).append("/").append(_birthYear).append(" "));
+        }
     }
 }

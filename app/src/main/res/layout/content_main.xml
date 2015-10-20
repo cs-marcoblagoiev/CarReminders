@@ -38,7 +38,10 @@
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
                 android:width="200dp"
-                android:inputType="date" />
+                android:inputType="date"
+
+
+                />
 
 
         </LinearLayout>
@@ -132,7 +135,8 @@
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
                 android:width="200dp"
-                android:inputType="date" />
+                android:inputType="date"
+                android:focusable="false"/>
 
 
         </LinearLayout>
@@ -156,7 +160,8 @@
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
                 android:width="200dp"
-                android:inputType="date" />
+                android:inputType="date"
+                android:focusable="false"/>
         </LinearLayout>
 
         <LinearLayout
@@ -178,7 +183,8 @@
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
                 android:width="200dp"
-                android:inputType="date" />
+                android:inputType="date"
+                android:focusable="false"/>
         </LinearLayout>
 
         <LinearLayout
@@ -200,7 +206,8 @@
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
                 android:width="200dp"
-                android:inputType="date" />
+                android:inputType="date"
+                android:focusable="false"/>
         </LinearLayout>
 
         <LinearLayout
@@ -222,7 +229,8 @@
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
                 android:width="200dp"
-                android:inputType="date" />
+                android:inputType="date"
+                android:focusable="false"/>
         </LinearLayout>
 
         <LinearLayout
@@ -244,7 +252,8 @@
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
                 android:width="200dp"
-                android:inputType="date" />
+                android:inputType="date"
+                android:focusable="false"/>
         </LinearLayout>
 
         <Button
