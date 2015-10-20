@@ -32,7 +32,7 @@
                 />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/editTextLicencePlate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
@@ -59,7 +59,7 @@
                 />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/editTextBrand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
@@ -81,26 +81,32 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-
-            <RadioButton
-                android:id="@+id/radioButton2"
+            <RadioGroup
+                android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/normal" />
+                android:layout_height="wrap_content">
 
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/taxi" />
 
-            <RadioButton
-                android:id="@+id/radioButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/transport" />
+                <RadioButton
+                    android:id="@+id/radioButtonNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/normal" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonTaxi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/taxi" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonTransport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/transport" />
+
+
+            </RadioGroup>
 
         </LinearLayout>
 
@@ -120,7 +126,7 @@
                 />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/editTextInsurance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
@@ -141,11 +147,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/vehicle_inspection"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/editTextInspection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
@@ -164,11 +169,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/road_tax"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/editTextTax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
@@ -187,11 +191,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/fire_extinguisher"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/editTextFire"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
@@ -210,11 +213,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/medical_kit"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <EditText
-                android:id="@+id/editText7"
+                android:id="@+id/editTextMedical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
@@ -233,11 +235,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rate"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <EditText
-                android:id="@+id/editText8"
+                android:id="@+id/editTextRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
@@ -247,14 +248,14 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/addButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="@string/text_button"
             android:layout_marginTop="32dp"
-            />
+            android:text="@string/text_button" />
+
 
     </LinearLayout>
 
