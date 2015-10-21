@@ -9,8 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class MainActivity extends BaseActivity {
 
@@ -135,18 +138,19 @@ public class MainActivity extends BaseActivity {
                 } else{
                     //got the radiobuttons code from here http://www.mkyong.com/android/android-radio-buttons-example/
                     //get selected radio button from radioGroup
-                    //int selectedId = radioTypeGroup.getCheckedRadioButtonId();
+                    int selectedId = radioTypeGroup.getCheckedRadioButtonId();
 
                     // find the radiobutton by returned id
-                    //RadioButton selectedRadioButton = (RadioButton) findViewById(selectedId);
+                    RadioButton selectedRadioButton = (RadioButton) findViewById(selectedId);
 
-                    //Log.d("DEBUG", "Selected car type is " + selectedRadioButton.getText());
+                    Log.d("DEBUG", "Selected car type is " + selectedRadioButton.getText());
                 }
             }
         });
 
     }
 
+    //TODO limit the days to future days
     //class borrowed from http://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext
     public class MyEditTextDatePicker  implements View.OnClickListener, OnDateSetListener {
         EditText _editText;
@@ -154,6 +158,7 @@ public class MainActivity extends BaseActivity {
         private int _month;
         private int _birthYear;
         private Context _context;
+        Calendar c = Calendar.getInstance();
 
         public MyEditTextDatePicker(Context context, EditText editTextViewID)
         {
@@ -172,8 +177,8 @@ public class MainActivity extends BaseActivity {
         }
         @Override
         public void onClick(View v) {
-            //TODO make the picker display todays date
-            DatePickerDialog dialog =  new DatePickerDialog(_context, this, 2015, 10, 20);
+            DatePickerDialog dialog =  new DatePickerDialog(_context, this, c.get(Calendar.YEAR),
+                    c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
             dialog.show();
 
         }

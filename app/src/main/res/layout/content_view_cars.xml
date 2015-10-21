@@ -21,6 +21,14 @@
         android:text="This is where the cars will be displayed"
         android:id="@+id/textView10"
         android:textSize="30dp"/>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+
 </LinearLayout>
 
 
