@@ -39,7 +39,7 @@
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
                 android:width="200dp"
-                android:inputType="date"
+                android:inputType="text"
 
 
                 />
@@ -69,7 +69,7 @@
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
                 android:width="200dp"
-                android:inputType="date" />
+                android:inputType="text" />
         </LinearLayout>
 
         <TextView
