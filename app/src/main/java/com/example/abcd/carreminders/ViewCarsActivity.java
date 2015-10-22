@@ -24,7 +24,7 @@ public class ViewCarsActivity extends BaseActivity {
         // drop this database if already exists
         //db.onUpgrade(db.getWritableDatabase(), 1, 2);
 
-        
+
 /*        Car car = new Car();
         car.setLicence("Car1");
         car.setBrand("Brand1");
@@ -42,6 +42,8 @@ public class ViewCarsActivity extends BaseActivity {
         for (int i = 0; i < list.size(); i++) {
             listCars.add(i, list.get(i).getLicence());
         }
+
+        
 
         //myAdapter = new ArrayAdapter(this, R.layout.row_layout, R.id.listText, listTitle);
 
