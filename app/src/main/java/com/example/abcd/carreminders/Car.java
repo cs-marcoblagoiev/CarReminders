@@ -17,7 +17,7 @@ public class Car {
 
     }
 
-    public Car(int ID, String licence, String brand, String usage, String insurance,
+    public Car(String licence, String brand, String usage, String insurance,
                String inspection, String tax, String fire, String medical, String rate) {
         this.ID = ID;
         this.licence = licence;

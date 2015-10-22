@@ -16,13 +16,14 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 public class MainActivity extends BaseActivity {
+    JCGSQLiteHelper db = new JCGSQLiteHelper(this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         super.onCreateDrawer(savedInstanceState);
-
 
         //edittexts
         final EditText editTextLicencePlate = (EditText) findViewById(R.id.editTextLicencePlate);
@@ -144,6 +145,12 @@ public class MainActivity extends BaseActivity {
                     RadioButton selectedRadioButton = (RadioButton) findViewById(selectedId);
 
                     Log.d("DEBUG", "Selected car type is " + selectedRadioButton.getText());
+                    Car car=new Car(licencePlate, brand, selectedRadioButton.getText().toString(), insurance,
+                            inspection, tax, fire, medical, rate);
+
+                    db.createCar(car);
+
+                    Toast.makeText(getApplicationContext(), "Car added to database", Toast.LENGTH_LONG).show();
                 }
             }
         });
