@@ -10,15 +10,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="?attr/actionBarSize"
-    tools:context=".ViewCarsActivity"
-    tools:showIn="@layout/app_bar_view_cars">
-
-    <ListView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+    tools:context=".ViewSettingsActivity"
+    tools:showIn="@layout/app_bar_view_settings"
+    >
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is where the settings will be displayed"
+        android:id="@+id/textView10"
+        android:textSize="30dp"/>
 </LinearLayout>
 
 

@@ -1,8 +1,10 @@
 package com.example.abcd.carreminders;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -74,6 +76,15 @@ public class ViewCarsActivity extends BaseActivity {
                 };
 
         m_listview.setAdapter(adapter);
+
+        m_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), ViewSingleCarActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         //getListView().setOnItemClickListener(this);

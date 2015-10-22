@@ -83,7 +83,8 @@ public class BaseActivity extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(), ViewEventsActivity.class);
             startActivity(intent);
         } else if (id == R.id.navSettings) {
-
+            Intent intent = new Intent(getApplicationContext(), ViewSettingsActivity.class);
+            startActivity(intent);
         } else if (id == R.id.navShare) {
 
         } else if (id == R.id.navSend) {
