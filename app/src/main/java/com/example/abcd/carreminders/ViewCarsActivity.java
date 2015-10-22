@@ -81,6 +81,7 @@ public class ViewCarsActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ViewSingleCarActivity.class);
+                //intent.putExtra("id", )
                 startActivity(intent);
             }
         });
