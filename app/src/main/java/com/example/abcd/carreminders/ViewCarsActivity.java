@@ -1,8 +1,11 @@
 package com.example.abcd.carreminders;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,11 +42,13 @@ public class ViewCarsActivity extends BaseActivity {
         list = db.getAllCars();
         List listCars = new ArrayList();
 
+
+
         for (int i = 0; i < list.size(); i++) {
-            listCars.add(i, list.get(i).getLicence());
+            listCars.add(i, list.get(i));
         }
 
-        
+
 
         //myAdapter = new ArrayAdapter(this, R.layout.row_layout, R.id.listText, listTitle);
 
@@ -54,7 +59,19 @@ public class ViewCarsActivity extends BaseActivity {
         //car.getBrand(), car.getLicence(), car2.getBrand(), car2.getBrand()
 
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text1, listCars);
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text1, listCars){
+                    //overridning the method so we can use both text items
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        View view = super.getView(position, convertView, parent);
+                        TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                        TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+
+                        text1.setText(list.get(position).getLicence());
+                        text2.setText(list.get(position).getBrand());
+                        return view;
+                    }
+                };
 
         m_listview.setAdapter(adapter);
 
@@ -62,6 +79,8 @@ public class ViewCarsActivity extends BaseActivity {
         //getListView().setOnItemClickListener(this);
         //setListAdapter(myAdapter);
     }
+
+
 
     }
 
