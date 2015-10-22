@@ -1,6 +1,7 @@
 package com.example.abcd.carreminders;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -28,8 +29,8 @@ public class ViewCarsActivity extends BaseActivity {
         db.createCar(car);
 
         Car car2 = new Car();
-        car.setLicence("Car2");
-        car.setBrand("Brand2");
+        car2.setLicence("Car2");
+        car2.setBrand("Brand2");
         db.createCar(car);
 /*
         // get all the cars
@@ -43,10 +44,13 @@ public class ViewCarsActivity extends BaseActivity {
         myAdapter = new ArrayAdapter(this, R.layout.row_layout, R.id.listText, listTitle);*/
 
         ListView m_listview = (ListView) findViewById(R.id.list);
+        Log.d("DEBUG", car.getBrand());
+        Log.d("DEBUG",car.getLicence());
+        String[] items = new String[] {car.getBrand(), car.getLicence(), car2.getLicence(), car2.getBrand()};
+        //car.getBrand(), car.getLicence(), car2.getBrand(), car2.getBrand()
 
-        String[] items = new String[] {"Item 1", "Item 2", "Item 3"};
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text1, items);
 
         m_listview.setAdapter(adapter);
 
