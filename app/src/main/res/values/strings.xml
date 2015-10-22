@@ -19,5 +19,7 @@
     <string name="medical_kit">Medical Kit</string>
     <string name="rate">Rate</string>
 
-    <string name="text_button">Add Car</string>
+    <string name="add_button">Add Car</string>
+    <string name="update_button">Update Car</string>
+    <string name="delete_button">Delete Car</string>
 </resources>

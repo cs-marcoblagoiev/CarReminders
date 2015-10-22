@@ -264,7 +264,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="32dp"
-            android:text="@string/text_button" />
+            android:text="@string/add_button" />
 
 
     </LinearLayout>
