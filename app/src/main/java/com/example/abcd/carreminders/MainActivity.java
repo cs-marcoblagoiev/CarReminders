@@ -14,6 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends BaseActivity {
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);
@@ -186,6 +187,7 @@ public class MainActivity extends BaseActivity {
         public void onClick(View v) {
             DatePickerDialog dialog =  new DatePickerDialog(_context, this, c.get(Calendar.YEAR),
                     c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+            dialog.getDatePicker().setMinDate(new Date().getTime());
             dialog.show();
 
         }
