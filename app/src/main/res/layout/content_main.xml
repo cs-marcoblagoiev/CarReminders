@@ -34,7 +34,7 @@
 
             <EditText
                 android:id="@+id/editTextLicencePlate"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
@@ -49,7 +49,7 @@
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -64,7 +64,7 @@
 
             <EditText
                 android:id="@+id/editTextBrand"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
@@ -131,7 +131,7 @@
 
             <EditText
                 android:id="@+id/editTextInsurance"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
@@ -156,7 +156,7 @@
 
             <EditText
                 android:id="@+id/editTextInspection"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
@@ -179,7 +179,7 @@
 
             <EditText
                 android:id="@+id/editTextTax"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
@@ -202,7 +202,7 @@
 
             <EditText
                 android:id="@+id/editTextFire"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
@@ -225,7 +225,7 @@
 
             <EditText
                 android:id="@+id/editTextMedical"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
@@ -248,7 +248,7 @@
 
             <EditText
                 android:id="@+id/editTextRate"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="29dp"
                 android:layout_marginRight="29dp"
