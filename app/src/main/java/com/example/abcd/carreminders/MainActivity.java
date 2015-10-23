@@ -160,6 +160,7 @@ public class MainActivity extends BaseActivity {
     }
 
     //TODO limit the days to future days
+    //TODO make the deaful value the date of today
     //class borrowed from http://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext
     public class MyEditTextDatePicker  implements View.OnClickListener, OnDateSetListener {
         EditText _editText;

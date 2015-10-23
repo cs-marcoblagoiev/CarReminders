@@ -111,7 +111,7 @@ public class Car {
         this.rate = rate;
     }
 
-    @Override
+/*    @Override
     public String toString() {
         return "Car{" +
                 "ID=" + ID +
@@ -125,5 +125,11 @@ public class Car {
                 ", medical='" + medical + '\'' +
                 ", rate='" + rate + '\'' +
                 '}';
+    }*/
+
+    //made it this way so we can use it in ViewCarsActivily Listview adapter
+    public String toString(){
+        return String.valueOf(this.ID);
     }
+
 }

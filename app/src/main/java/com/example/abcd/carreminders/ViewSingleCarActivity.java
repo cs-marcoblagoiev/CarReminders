@@ -2,6 +2,7 @@ package com.example.abcd.carreminders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -20,7 +21,24 @@ public class ViewSingleCarActivity extends BaseActivity {
         setContentView(R.layout.activity_view_single_car);
         super.onCreateDrawer(savedInstanceState);
 
+        int id=-1;
+
+        //retrieving the id from the last intent
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        if(bundle != null){
+            id = bundle.getInt("id");
+        }
+
+        Log.d("DEBUG", "String received in ViewSingleCarActivity is: " + String.valueOf(id));
+
+
+        //getting the car from the database
+        Car car=db.findCar(id);
+
         final List listFields = new ArrayList();
+        final List listValues = new ArrayList();
 
         listFields.add(0,"Licence Plate");
         listFields.add(1,"Brand, model");
@@ -32,20 +50,17 @@ public class ViewSingleCarActivity extends BaseActivity {
         listFields.add(7,"Medical Kit");
         listFields.add(8,"Rate");
 
-        Car car=db.findCar(1);
+        listValues.add(0,car.getLicence());
+        listValues.add(1,car.getBrand());
+        listValues.add(2,car.getUsage());
+        listValues.add(3,car.getInsurance());
+        listValues.add(4,car.getInspection());
+        listValues.add(5,car.getTax());
+        listValues.add(6,car.getFire());
+        listValues.add(7,car.getMedical());
+        listValues.add(8,car.getRate());
 
-/*        TextView licenceText = (TextView) findViewById(R.id.licencePlateAdd);
-        licenceText.append(car.getLicence());*/
 
-        //List listCars = new ArrayList();
-
-
-
-/*
-        for (int i = 0; i < list.size(); i++) {
-            listCars.add(i, list.get(i));
-        }
-*/
 
         ListView m_listview = (ListView) findViewById(R.id.list);
 
@@ -59,7 +74,7 @@ public class ViewSingleCarActivity extends BaseActivity {
                         TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
                         text1.setText(listFields.get(position).toString());
-                        text2.setText(listFields.get(position).toString());
+                        text2.setText(listValues.get(position).toString());
                         return view;
                     }
                 };
@@ -70,7 +85,6 @@ public class ViewSingleCarActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), ViewSingleCarActivity.class);
-                //intent.putExtra("id", )
                 startActivity(intent);
             }
         });
