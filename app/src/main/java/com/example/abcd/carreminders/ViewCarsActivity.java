@@ -58,13 +58,7 @@ public class ViewCarsActivity extends BaseActivity {
         m_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                //Toast.makeText(getApplicationContext(), "The id is " + String.valueOf(id), Toast.LENGTH_LONG);
-
-                //transmitting the if from the list, but we need the id from the database....
                 Log.d("DEBUG", "adapter: " + String.valueOf(adapter.getItem(position)));
-                //Log.d("DEBUG", "adapter: " + adapter.getItem(position));
-
-                //must do this to get the id of the car which is clicked...
                 int idOfCar=Integer.parseInt(String.valueOf(adapter.getItem(position)));
 
                 Car car = new Car();
@@ -77,11 +71,9 @@ public class ViewCarsActivity extends BaseActivity {
             }
         });
 
-
-
-        //getListView().setOnItemClickListener(this);
-        //setListAdapter(myAdapter);
     }
+
+
 
 
 

@@ -1,12 +1,16 @@
 package com.example.abcd.carreminders;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -64,7 +68,7 @@ public class ViewSingleCarActivity extends BaseActivity {
 
         ListView m_listview = (ListView) findViewById(R.id.list);
 
-        ArrayAdapter<String> adapter =
+        final ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text1, listFields){
                     //overriding the method so we can use both text items
                     @Override
@@ -84,11 +88,38 @@ public class ViewSingleCarActivity extends BaseActivity {
         m_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), ViewSingleCarActivity.class);
-                startActivity(intent);
+                changeLicencePlate();
             }
         });
 
 
+    }
+
+    private void changeLicencePlate(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ViewSingleCarActivity.this);
+        builder.setTitle("Licence Plate");
+
+        // Set up the input
+        final EditText input = new EditText(getApplicationContext());
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        //input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //m_Text = input.getText().toString();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
     }
 }
