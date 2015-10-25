@@ -1,5 +1,8 @@
 package com.example.abcd.carreminders;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ViewSingleCarActivity extends BaseActivity {
@@ -103,24 +108,22 @@ public class ViewSingleCarActivity extends BaseActivity {
                         //TODO
                         break;
                     case 3:
-                        changeInsurance(view);
-
-                        updateView();
+                        showStartDateDialog(view, 3);
                         break;
                     case 4:
-                        changeLicencePlate();
+                        showStartDateDialog(view, 4);
                         break;
                     case 5:
-                        changeLicencePlate();
+                        showStartDateDialog(view, 5);
                         break;
                     case 6:
-                        changeLicencePlate();
+                        showStartDateDialog(view, 6);
                         break;
                     case 7:
-                        changeLicencePlate();
+                        showStartDateDialog(view, 7);
                         break;
                     case 8:
-                        changeLicencePlate();
+                        showStartDateDialog(view, 8);
                         break;
 
 
@@ -200,5 +203,49 @@ public class ViewSingleCarActivity extends BaseActivity {
         listValues.add(3, string);*/
         //updateView();
         Log.d("DEBUG", "Exiting changeInsurance");
+    }
+
+    public void showStartDateDialog(View v, int position){
+        DialogFragment dialogFragment = new StartDatePicker(position);
+        dialogFragment.show(getFragmentManager(), "start_date_picker");
+    }
+
+
+
+    Calendar c= Calendar.getInstance();
+    int startYear=c.get(Calendar.YEAR);
+    int startMonth=c.get(Calendar.MONTH);
+    int startDay=c.get(Calendar.DAY_OF_MONTH);
+    public class StartDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener{
+
+        int position;
+
+        public StartDatePicker(int position){
+            this.position=position;
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // TODO Auto-generated method stub
+            // Use the current date as the default date in the picker
+            DatePickerDialog dialog = new DatePickerDialog(ViewSingleCarActivity.this, this, startYear, startMonth, startDay);
+            return dialog;
+
+        }
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            // TODO Auto-generated method stub
+            // Do something with the date chosen by the user
+            startYear = year;
+            startMonth = monthOfYear;
+            startDay = dayOfMonth;
+            updateStartDateDisplay();
+        }
+
+        public void updateStartDateDisplay(){
+            int startMonth2=startMonth+1;
+            listValues.add(position, startDay + "/" + startMonth2 + "/" + startYear);
+            updateView();
+        }
     }
 }
