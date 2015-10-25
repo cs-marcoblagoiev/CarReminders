@@ -13,9 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -106,7 +109,7 @@ public class ViewSingleCarActivity extends BaseActivity {
                         changeBrand();
                         break;
                     case 2:
-                        //TODO
+                        editUsage();
                         break;
                     case 3:
                         showStartDateDialog(view, 3);
@@ -193,6 +196,47 @@ public class ViewSingleCarActivity extends BaseActivity {
         });
 
         builder.show();
+    }
+
+    public void editUsage(){
+        final Dialog dialog = new Dialog(ViewSingleCarActivity.this);
+        dialog.setContentView(R.layout.radio_layout);
+        dialog.setTitle("Select the usage");
+        dialog.setCancelable(true);
+        // there are a lot of settings, for dialog, check them all out!
+        // set up radiobutton
+
+        Button selectButton = (Button)dialog.findViewById(R.id.selectButton);
+        final RadioGroup radioTypeGroup = (RadioGroup)dialog.findViewById(R.id.radioGroup);
+
+
+/*        RadioButton rd1 = (RadioButton) dialog.findViewById(R.id.normal);
+        RadioButton rd2 = (RadioButton) dialog.findViewById(R.id.taxi);
+        RadioButton rd3 = (RadioButton) dialog.findViewById(R.id.transport);*/
+
+        //button listener
+        selectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    //TODO verifiy that a radiobutton is selected
+                    //got the radiobuttons code from here http://www.mkyong.com/android/android-radio-buttons-example/
+                    //get selected radio button from radioGroup
+                    int selectedId = radioTypeGroup.getCheckedRadioButtonId();
+
+                    // find the radiobutton by returned id
+                    RadioButton selectedRadioButton = (RadioButton)dialog.findViewById(selectedId);
+
+                    listValues.set(2,selectedRadioButton.getText().toString());
+                    Log.d("DEBUG",selectedRadioButton.getText().toString());
+                    updateView();
+                    dialog.cancel();
+                }
+
+        });
+
+
+       dialog.show();
     }
 
     public void showStartDateDialog(View v, int position){
