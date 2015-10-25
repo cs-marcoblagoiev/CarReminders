@@ -19,6 +19,8 @@ import java.util.List;
 
 public class ViewSingleCarActivity extends BaseActivity {
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);
+    final List listFields = new ArrayList();
+    final List listValues = new ArrayList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +43,7 @@ public class ViewSingleCarActivity extends BaseActivity {
         //getting the car from the database
         Car car=db.findCar(id);
 
-        final List listFields = new ArrayList();
-        final List listValues = new ArrayList();
+
 
         listFields.add(0,"Licence Plate");
         listFields.add(1,"Brand, model");
@@ -61,11 +62,13 @@ public class ViewSingleCarActivity extends BaseActivity {
         listValues.add(4,car.getInspection());
         listValues.add(5,car.getTax());
         listValues.add(6,car.getFire());
-        listValues.add(7,car.getMedical());
-        listValues.add(8,car.getRate());
+        listValues.add(7, car.getMedical());
+        listValues.add(8, car.getRate());
 
+        updateView();
+    }
 
-
+    private void updateView(){
         ListView m_listview = (ListView) findViewById(R.id.list);
 
         final ArrayAdapter<String> adapter =
@@ -88,11 +91,40 @@ public class ViewSingleCarActivity extends BaseActivity {
         m_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                changeLicencePlate();
+                Log.d("DEBUG", "adapter: " + String.valueOf(adapter.getItemId(position)));
+                switch ((int)adapter.getItemId(position)) {
+                    case 0:
+                        changeLicencePlate();
+                        break;
+                    case 1:
+                        changeBrand();
+                        break;
+                    case 2:
+                        changeLicencePlate();
+                        break;
+                    case 3:
+                        changeLicencePlate();
+                        break;
+                    case 4:
+                        changeLicencePlate();
+                        break;
+                    case 5:
+                        changeLicencePlate();
+                        break;
+                    case 6:
+                        changeLicencePlate();
+                        break;
+                    case 7:
+                        changeLicencePlate();
+                        break;
+                    case 8:
+                        changeLicencePlate();
+                        break;
+
+
+                }
             }
         });
-
-
     }
 
     private void changeLicencePlate(){
@@ -111,6 +143,40 @@ public class ViewSingleCarActivity extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //m_Text = input.getText().toString();
+                //changing the old value with the new value(just in the view)
+                listValues.remove(0);
+                listValues.add(0,input.getText().toString());
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    public void changeBrand(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ViewSingleCarActivity.this);
+        builder.setTitle("Brand, Model");
+
+        // Set up the input
+        final EditText input = new EditText(getApplicationContext());
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        //input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //m_Text = input.getText().toString();
+                //changing the old value with the new value(just in the view)
+                listValues.remove(1);
+                listValues.add(1,input.getText().toString());
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
