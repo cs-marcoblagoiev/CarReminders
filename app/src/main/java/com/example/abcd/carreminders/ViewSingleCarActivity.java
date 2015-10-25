@@ -20,7 +20,7 @@ import java.util.List;
 public class ViewSingleCarActivity extends BaseActivity {
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);
     final List listFields = new ArrayList();
-    final List listValues = new ArrayList();
+    public final List listValues = new ArrayList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,10 +100,12 @@ public class ViewSingleCarActivity extends BaseActivity {
                         changeBrand();
                         break;
                     case 2:
-                        changeLicencePlate();
+                        //TODO
                         break;
                     case 3:
-                        changeLicencePlate();
+                        changeInsurance(view);
+
+                        updateView();
                         break;
                     case 4:
                         changeLicencePlate();
@@ -187,5 +189,16 @@ public class ViewSingleCarActivity extends BaseActivity {
         });
 
         builder.show();
+    }
+
+    public void changeInsurance(View view){
+        MyLabelDatePicker licenceEdit = new MyLabelDatePicker(ViewSingleCarActivity.this, listValues);
+        licenceEdit.onClick(view);
+        //String string = licenceEdit.updateDisplay();
+        //Log.d("DEBUG", "The string from changeInsurance is " + string);
+/*        listValues.remove(3);
+        listValues.add(3, string);*/
+        //updateView();
+        Log.d("DEBUG", "Exiting changeInsurance");
     }
 }

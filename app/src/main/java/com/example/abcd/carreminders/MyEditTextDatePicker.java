@@ -2,6 +2,7 @@ package com.example.abcd.carreminders;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -34,6 +35,21 @@ public class MyEditTextDatePicker  implements View.OnClickListener, DatePickerDi
         _month = monthOfYear;
         _day = dayOfMonth;
         updateDisplay();
+        Log.d("DEBUG", "Im in onDateSet");
+        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+        Log.d("DEBUG", stackTraceElements[0].toString());
+        Log.d("DEBUG", stackTraceElements[1].toString());
+        Log.d("DEBUG", stackTraceElements[2].toString());
+        Log.d("DEBUG", stackTraceElements[3].toString());
+        Log.d("DEBUG", stackTraceElements[4].toString());
+        Log.d("DEBUG", stackTraceElements[5].toString());
+        Log.d("DEBUG", stackTraceElements[6].toString());
+        Log.d("DEBUG", stackTraceElements[7].toString());
+        Log.d("DEBUG", stackTraceElements[8].toString());
+        Log.d("DEBUG", stackTraceElements[9].toString());
+        Log.d("DEBUG", stackTraceElements[10].toString());
+        Log.d("DEBUG", stackTraceElements[11].toString());
+
     }
     @Override
     public void onClick(View v) {
@@ -41,6 +57,7 @@ public class MyEditTextDatePicker  implements View.OnClickListener, DatePickerDi
                 c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
         dialog.getDatePicker().setMinDate(new Date().getTime());
         dialog.show();
+        Log.d("DEBUG", "In onClick ");
 
     }
 
@@ -50,6 +67,7 @@ public class MyEditTextDatePicker  implements View.OnClickListener, DatePickerDi
         _editText.setText(new StringBuilder()
                 // Month is 0 based so add 1
                 .append(_day).append("/").append(_month + 1).append("/").append(_birthYear).append(" "));
+        Log.d("DEBUG", "In updateDiplay ");
     }
 }
 

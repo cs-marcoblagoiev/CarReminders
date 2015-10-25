@@ -44,7 +44,9 @@ public class MainActivity extends BaseActivity {
                 //use mainactivity.this instead of getApplicationContext, otherwise: Unable to add window -- token null is not for an application
                 MyEditTextDatePicker licenceEdit = new MyEditTextDatePicker(MainActivity.this, editTextInsurance);
                 licenceEdit.onClick(v);
-                licenceEdit.updateDisplay();
+                Log.d("DEBUG", "In calling updateDisplay from Main Activity ");
+/*                //licenceEdit.updateDisplay();
+                Log.d("DEBUG", "Done calling updateDisplay from MianActivity ");*/
             }
         });
 
@@ -55,7 +57,6 @@ public class MainActivity extends BaseActivity {
                 //use mainactivity.this instead of getApplicationContext, otherwise: Unable to add window -- token null is not for an application
                 MyEditTextDatePicker licenceEdit = new MyEditTextDatePicker(MainActivity.this, editTextInspection );
                 licenceEdit.onClick(v);
-                licenceEdit.updateDisplay();
             }
         });
 
@@ -66,7 +67,6 @@ public class MainActivity extends BaseActivity {
                 //use mainactivity.this instead of getApplicationContext, otherwise: Unable to add window -- token null is not for an application
                 MyEditTextDatePicker licenceEdit = new MyEditTextDatePicker(MainActivity.this, editTextTax );
                 licenceEdit.onClick(v);
-                licenceEdit.updateDisplay();
             }
         });
 
@@ -77,7 +77,6 @@ public class MainActivity extends BaseActivity {
                 //use mainactivity.this instead of getApplicationContext, otherwise: Unable to add window -- token null is not for an application
                 MyEditTextDatePicker licenceEdit = new MyEditTextDatePicker(MainActivity.this, editTextFire );
                 licenceEdit.onClick(v);
-                licenceEdit.updateDisplay();
             }
         });
 
@@ -88,7 +87,6 @@ public class MainActivity extends BaseActivity {
                 //use mainactivity.this instead of getApplicationContext, otherwise: Unable to add window -- token null is not for an application
                 MyEditTextDatePicker licenceEdit = new MyEditTextDatePicker(MainActivity.this, editTextMedical );
                 licenceEdit.onClick(v);
-                licenceEdit.updateDisplay();
             }
         });
 
@@ -99,7 +97,6 @@ public class MainActivity extends BaseActivity {
                 //use mainactivity.this instead of getApplicationContext, otherwise: Unable to add window -- token null is not for an application
                 MyEditTextDatePicker licenceEdit = new MyEditTextDatePicker(MainActivity.this, editTextRate );
                 licenceEdit.onClick(v);
-                licenceEdit.updateDisplay();
             }
         });
 

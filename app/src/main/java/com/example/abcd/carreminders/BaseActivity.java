@@ -76,15 +76,19 @@ public class BaseActivity extends AppCompatActivity
         if (id == R.id.navAddNewCar) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
+            finish();
         } else if (id == R.id.navViewYourCars) {
             Intent intent = new Intent(getApplicationContext(), ViewCarsActivity.class);
             startActivity(intent);
+            finish();
         } else if (id == R.id.navViewEvents) {
             Intent intent = new Intent(getApplicationContext(), ViewEventsActivity.class);
             startActivity(intent);
+            finish();
         } else if (id == R.id.navSettings) {
             Intent intent = new Intent(getApplicationContext(), ViewSettingsActivity.class);
             startActivity(intent);
+            finish();
         } else if (id == R.id.navShare) {
 
         } else if (id == R.id.navSend) {
