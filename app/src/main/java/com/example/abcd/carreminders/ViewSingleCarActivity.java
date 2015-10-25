@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,19 +31,20 @@ public class ViewSingleCarActivity extends BaseActivity {
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);
     final List listFields = new ArrayList();
     public final List listValues = new ArrayList();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_single_car);
         super.onCreateDrawer(savedInstanceState);
 
-        int id=-1;
+        int id = -1;
 
         //retrieving the id from the last intent
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
-        if(bundle != null){
+        if (bundle != null) {
             id = bundle.getInt("id");
         }
 
@@ -50,38 +52,56 @@ public class ViewSingleCarActivity extends BaseActivity {
 
 
         //getting the car from the database
-        Car car=db.findCar(id);
+        final Car car = db.findCar(id);
 
 
+        listFields.add(0, "Licence Plate");
+        listFields.add(1, "Brand, model");
+        listFields.add(2, "Usage");
+        listFields.add(3, "Insurance");
+        listFields.add(4, "Vehicle Inspection");
+        listFields.add(5, "Road Tax");
+        listFields.add(6, "Fire Extinguisher");
+        listFields.add(7, "Medical Kit");
+        listFields.add(8, "Rate");
 
-        listFields.add(0,"Licence Plate");
-        listFields.add(1,"Brand, model");
-        listFields.add(2,"Usage");
-        listFields.add(3,"Insurance");
-        listFields.add(4,"Vehicle Inspection");
-        listFields.add(5,"Road Tax");
-        listFields.add(6,"Fire Extinguisher");
-        listFields.add(7,"Medical Kit");
-        listFields.add(8,"Rate");
-
-        listValues.add(0,car.getLicence());
-        listValues.add(1,car.getBrand());
-        listValues.add(2,car.getUsage());
-        listValues.add(3,car.getInsurance());
-        listValues.add(4,car.getInspection());
-        listValues.add(5,car.getTax());
-        listValues.add(6,car.getFire());
+        listValues.add(0, car.getLicence());
+        listValues.add(1, car.getBrand());
+        listValues.add(2, car.getUsage());
+        listValues.add(3, car.getInsurance());
+        listValues.add(4, car.getInspection());
+        listValues.add(5, car.getTax());
+        listValues.add(6, car.getFire());
         listValues.add(7, car.getMedical());
         listValues.add(8, car.getRate());
+
+        Button updateButton = (Button) findViewById(R.id.updateButton);
+        Button deleteButton = (Button) findViewById(R.id.deleteButton);
+
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.updateCar(car);
+                Toast.makeText(getApplicationContext(), "Car updated", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.deleteCar(car);
+                Toast.makeText(getApplicationContext(), "Car deleted", Toast.LENGTH_LONG).show();
+            }
+        });
 
         updateView();
     }
 
-    private void updateView(){
+    private void updateView() {
         ListView m_listview = (ListView) findViewById(R.id.list);
 
         final ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text1, listFields){
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text1, listFields) {
                     //overriding the method so we can use both text items
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
@@ -136,7 +156,7 @@ public class ViewSingleCarActivity extends BaseActivity {
         });
     }
 
-    private void changeLicencePlate(){
+    private void changeLicencePlate() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewSingleCarActivity.this);
         builder.setTitle("Licence Plate");
 
@@ -154,7 +174,7 @@ public class ViewSingleCarActivity extends BaseActivity {
                 //m_Text = input.getText().toString();
                 //changing the old value with the new value(just in the view)
                 listValues.remove(0);
-                listValues.add(0,input.getText().toString());
+                listValues.add(0, input.getText().toString());
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -167,7 +187,7 @@ public class ViewSingleCarActivity extends BaseActivity {
         builder.show();
     }
 
-    public void changeBrand(){
+    public void changeBrand() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewSingleCarActivity.this);
         builder.setTitle("Brand, Model");
 
@@ -185,7 +205,7 @@ public class ViewSingleCarActivity extends BaseActivity {
                 //m_Text = input.getText().toString();
                 //changing the old value with the new value(just in the view)
                 listValues.remove(1);
-                listValues.add(1,input.getText().toString());
+                listValues.add(1, input.getText().toString());
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -198,7 +218,7 @@ public class ViewSingleCarActivity extends BaseActivity {
         builder.show();
     }
 
-    public void editUsage(){
+    public void editUsage() {
         final Dialog dialog = new Dialog(ViewSingleCarActivity.this);
         dialog.setContentView(R.layout.radio_layout);
         dialog.setTitle("Select the usage");
@@ -206,56 +226,51 @@ public class ViewSingleCarActivity extends BaseActivity {
         // there are a lot of settings, for dialog, check them all out!
         // set up radiobutton
 
-        Button selectButton = (Button)dialog.findViewById(R.id.selectButton);
-        final RadioGroup radioTypeGroup = (RadioGroup)dialog.findViewById(R.id.radioGroup);
-
-
-/*        RadioButton rd1 = (RadioButton) dialog.findViewById(R.id.normal);
-        RadioButton rd2 = (RadioButton) dialog.findViewById(R.id.taxi);
-        RadioButton rd3 = (RadioButton) dialog.findViewById(R.id.transport);*/
+        Button selectButton = (Button) dialog.findViewById(R.id.selectButton);
+        final RadioGroup radioTypeGroup = (RadioGroup) dialog.findViewById(R.id.radioGroup);
 
         //button listener
         selectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                    //TODO verifiy that a radiobutton is selected
-                    //got the radiobuttons code from here http://www.mkyong.com/android/android-radio-buttons-example/
-                    //get selected radio button from radioGroup
-                    int selectedId = radioTypeGroup.getCheckedRadioButtonId();
+                //TODO verifiy that a radiobutton is selected
+                //got the radiobuttons code from here http://www.mkyong.com/android/android-radio-buttons-example/
+                //get selected radio button from radioGroup
+                int selectedId = radioTypeGroup.getCheckedRadioButtonId();
 
-                    // find the radiobutton by returned id
-                    RadioButton selectedRadioButton = (RadioButton)dialog.findViewById(selectedId);
+                // find the radiobutton by returned id
+                RadioButton selectedRadioButton = (RadioButton) dialog.findViewById(selectedId);
 
-                    listValues.set(2,selectedRadioButton.getText().toString());
-                    Log.d("DEBUG",selectedRadioButton.getText().toString());
-                    updateView();
-                    dialog.cancel();
-                }
+                listValues.set(2, selectedRadioButton.getText().toString());
+                Log.d("DEBUG", selectedRadioButton.getText().toString());
+                updateView();
+                dialog.cancel();
+            }
 
         });
 
 
-       dialog.show();
+        dialog.show();
     }
 
-    public void showStartDateDialog(View v, int position){
+    public void showStartDateDialog(View v, int position) {
         DialogFragment dialogFragment = new StartDatePicker(position);
         dialogFragment.show(getFragmentManager(), "start_date_picker");
     }
 
 
+    Calendar c = Calendar.getInstance();
+    int startYear = c.get(Calendar.YEAR);
+    int startMonth = c.get(Calendar.MONTH);
+    int startDay = c.get(Calendar.DAY_OF_MONTH);
 
-    Calendar c= Calendar.getInstance();
-    int startYear=c.get(Calendar.YEAR);
-    int startMonth=c.get(Calendar.MONTH);
-    int startDay=c.get(Calendar.DAY_OF_MONTH);
-    public class StartDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener{
+    public class StartDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
         int position;
 
-        public StartDatePicker(int position){
-            this.position=position;
+        public StartDatePicker(int position) {
+            this.position = position;
         }
 
         @Override
@@ -267,6 +282,7 @@ public class ViewSingleCarActivity extends BaseActivity {
             return dialog;
 
         }
+
         public void onDateSet(DatePicker view, int year, int monthOfYear,
                               int dayOfMonth) {
             // TODO Auto-generated method stub
@@ -277,8 +293,8 @@ public class ViewSingleCarActivity extends BaseActivity {
             updateStartDateDisplay();
         }
 
-        public void updateStartDateDisplay(){
-            int startMonth2=startMonth+1;
+        public void updateStartDateDisplay() {
+            int startMonth2 = startMonth + 1;
             listValues.add(position, startDay + "/" + startMonth2 + "/" + startYear);
             updateView();
         }

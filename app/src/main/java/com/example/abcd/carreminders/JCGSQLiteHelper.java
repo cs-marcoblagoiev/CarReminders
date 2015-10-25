@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -154,7 +155,9 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
         values.put("rate", car.getRate());
 
         // update
-        int i = db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = ?", new String[] { String.valueOf(car.getID()) });
+        int i = db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = ?",  new String[] { String.valueOf(car.getID()) });
+        //int i = db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = " + car.getID(),  new String[] { String.valueOf(car.getID()) });
+        Log.d("DEBUG", "In JCGSQLite updatecar" + i);
 
         db.close();
         return i;
