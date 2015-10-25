@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ViewSingleCarActivity extends BaseActivity {
@@ -97,7 +98,7 @@ public class ViewSingleCarActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Log.d("DEBUG", "adapter: " + String.valueOf(adapter.getItemId(position)));
-                switch ((int)adapter.getItemId(position)) {
+                switch ((int) adapter.getItemId(position)) {
                     case 0:
                         changeLicencePlate();
                         break;
@@ -194,17 +195,6 @@ public class ViewSingleCarActivity extends BaseActivity {
         builder.show();
     }
 
-    public void changeInsurance(View view){
-        MyLabelDatePicker licenceEdit = new MyLabelDatePicker(ViewSingleCarActivity.this, listValues);
-        licenceEdit.onClick(view);
-        //String string = licenceEdit.updateDisplay();
-        //Log.d("DEBUG", "The string from changeInsurance is " + string);
-/*        listValues.remove(3);
-        listValues.add(3, string);*/
-        //updateView();
-        Log.d("DEBUG", "Exiting changeInsurance");
-    }
-
     public void showStartDateDialog(View v, int position){
         DialogFragment dialogFragment = new StartDatePicker(position);
         dialogFragment.show(getFragmentManager(), "start_date_picker");
@@ -229,6 +219,7 @@ public class ViewSingleCarActivity extends BaseActivity {
             // TODO Auto-generated method stub
             // Use the current date as the default date in the picker
             DatePickerDialog dialog = new DatePickerDialog(ViewSingleCarActivity.this, this, startYear, startMonth, startDay);
+            dialog.getDatePicker().setMinDate(new Date().getTime());
             return dialog;
 
         }
