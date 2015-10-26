@@ -29,4 +29,5 @@
     <string name="checkbox_one">One month before expiry date</string>
     <string name="checkbox_two">One week before expiry date</string>
     <string name="checkbox_three">One day before expiry date</string>
+    <string name="save_settings">Save setting</string>
 </resources>
