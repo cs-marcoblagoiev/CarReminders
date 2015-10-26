@@ -68,6 +68,7 @@ public class ViewCarsActivity extends BaseActivity {
 
                 intent.putExtra("id", idOfCar);
                 startActivity(intent);
+                finish();
             }
         });
 
