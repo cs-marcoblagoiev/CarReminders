@@ -56,16 +56,7 @@ public class MyEditTextDatePicker  implements View.OnClickListener, DatePickerDi
         DatePickerDialog dialog =  new DatePickerDialog(_context, this, c.get(Calendar.YEAR),
                 c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
 
-        final long ONE_MINUTE_IN_MILLIS=60000;//millisecs
-
-        Date date = new Date();
-        long t=date.getTime();
-        Date afterAddingTenMins=new Date(t - (10 * ONE_MINUTE_IN_MILLIS));
-
-        Log.d("DEBUG", afterAddingTenMins.toString());
-        Log.d("DEBUG", Long.getLong(afterAddingTenMins.toString()).toString());
-
-        dialog.getDatePicker().setMinDate(Long.getLong(afterAddingTenMins.toString()));
+        dialog.getDatePicker().setMinDate(new Date().getTime());
         dialog.show();
         Log.d("DEBUG", "In onClick ");
 

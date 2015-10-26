@@ -171,7 +171,11 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
                 "' , usage='" + values.get("rate") + "', insurance='" + values.get("rate") + "' WHERE id=" +
                 car.getID() + ";");*/
 
-        db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = ?", new String[]{String.valueOf(car.getID())});
+        db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = " + String.valueOf(car.getID()), null);
+        Log.d("DEBUG", "the car id is " + String.valueOf(car.getID()));
+        Log.d("DEBUG", "CARS_TABLE_NAME" + CARS_TABLE_NAME);
+        Log.d("DEBUG", "CARS_COLUMN_ID" + CARS_COLUMN_ID);
+        Log.d("DEBUG", "values" + values.toString());
 
         db.close();
         //return i;

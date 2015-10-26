@@ -31,6 +31,7 @@ public class ViewSingleCarActivity extends BaseActivity {
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);
     final List listFields = new ArrayList();
     public final List listValues = new ArrayList();
+    Car car;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class ViewSingleCarActivity extends BaseActivity {
 
 
         //getting the car from the database
-        final Car car = db.findCar(id);
+        car = db.findCar(id);
 
 
         listFields.add(0, "Licence Plate");
@@ -173,8 +174,9 @@ public class ViewSingleCarActivity extends BaseActivity {
             public void onClick(DialogInterface dialog, int which) {
                 //m_Text = input.getText().toString();
                 //changing the old value with the new value(just in the view)
-                listValues.remove(0);
+               listValues.remove(0);
                 listValues.add(0, input.getText().toString());
+                car.setLicence(input.getText().toString());
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -206,6 +208,7 @@ public class ViewSingleCarActivity extends BaseActivity {
                 //changing the old value with the new value(just in the view)
                 listValues.remove(1);
                 listValues.add(1, input.getText().toString());
+                car.setBrand(input.getText().toString());
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -243,6 +246,7 @@ public class ViewSingleCarActivity extends BaseActivity {
                 RadioButton selectedRadioButton = (RadioButton) dialog.findViewById(selectedId);
 
                 listValues.set(2, selectedRadioButton.getText().toString());
+                car.setUsage(selectedRadioButton.getText().toString());
                 Log.d("DEBUG", selectedRadioButton.getText().toString());
                 updateView();
                 dialog.cancel();
@@ -295,7 +299,22 @@ public class ViewSingleCarActivity extends BaseActivity {
 
         public void updateStartDateDisplay() {
             int startMonth2 = startMonth + 1;
-            listValues.add(position, startDay + "/" + startMonth2 + "/" + startYear);
+            listValues.remove(position);
+            String finalDate=startDay + "/" + startMonth2 + "/" + startYear;
+            listValues.add(position, finalDate);
+            if (position==3){
+                car.setInsurance(finalDate);
+            }else if (position==4){
+                car.setInspection(finalDate);
+            }else if(position==5){
+                car.setTax(finalDate);
+            }else if(position==6){
+                car.setFire(finalDate);
+            }else if (position==7){
+                car.setMedical(finalDate);
+            }else if (position==8){
+                car.setRate(finalDate);
+            }
             updateView();
         }
     }
