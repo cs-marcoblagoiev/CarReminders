@@ -36,26 +36,36 @@ public class MyEditTextDatePicker  implements View.OnClickListener, DatePickerDi
         _day = dayOfMonth;
         updateDisplay();
         Log.d("DEBUG", "Im in onDateSet");
-        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
-        Log.d("DEBUG", stackTraceElements[0].toString());
-        Log.d("DEBUG", stackTraceElements[1].toString());
-        Log.d("DEBUG", stackTraceElements[2].toString());
-        Log.d("DEBUG", stackTraceElements[3].toString());
-        Log.d("DEBUG", stackTraceElements[4].toString());
-        Log.d("DEBUG", stackTraceElements[5].toString());
-        Log.d("DEBUG", stackTraceElements[6].toString());
-        Log.d("DEBUG", stackTraceElements[7].toString());
-        Log.d("DEBUG", stackTraceElements[8].toString());
-        Log.d("DEBUG", stackTraceElements[9].toString());
-        Log.d("DEBUG", stackTraceElements[10].toString());
-        Log.d("DEBUG", stackTraceElements[11].toString());
+//        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+//        Log.d("DEBUG", stackTraceElements[0].toString());
+//        Log.d("DEBUG", stackTraceElements[1].toString());
+//        Log.d("DEBUG", stackTraceElements[2].toString());
+//        Log.d("DEBUG", stackTraceElements[3].toString());
+//        Log.d("DEBUG", stackTraceElements[4].toString());
+//        Log.d("DEBUG", stackTraceElements[5].toString());
+//        Log.d("DEBUG", stackTraceElements[6].toString());
+//        Log.d("DEBUG", stackTraceElements[7].toString());
+//        Log.d("DEBUG", stackTraceElements[8].toString());
+//        Log.d("DEBUG", stackTraceElements[9].toString());
+//        Log.d("DEBUG", stackTraceElements[10].toString());
+//        Log.d("DEBUG", stackTraceElements[11].toString());
 
     }
     @Override
     public void onClick(View v) {
         DatePickerDialog dialog =  new DatePickerDialog(_context, this, c.get(Calendar.YEAR),
                 c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
-        dialog.getDatePicker().setMinDate(new Date().getTime());
+
+        final long ONE_MINUTE_IN_MILLIS=60000;//millisecs
+
+        Date date = new Date();
+        long t=date.getTime();
+        Date afterAddingTenMins=new Date(t - (10 * ONE_MINUTE_IN_MILLIS));
+
+        Log.d("DEBUG", afterAddingTenMins.toString());
+        Log.d("DEBUG", Long.getLong(afterAddingTenMins.toString()).toString());
+
+        dialog.getDatePicker().setMinDate(Long.getLong(afterAddingTenMins.toString()));
         dialog.show();
         Log.d("DEBUG", "In onClick ");
 

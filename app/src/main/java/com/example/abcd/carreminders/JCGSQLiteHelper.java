@@ -137,7 +137,7 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
         return cars;
     }
 
-    public int updateCar(Car car) {
+    public void updateCar(Car car) {
 
         // get reference of the CarDB database
         SQLiteDatabase db = this.getWritableDatabase();
@@ -155,12 +155,26 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
         values.put("rate", car.getRate());
 
         // update
-        int i = db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = ?",  new String[] { String.valueOf(car.getID()) });
-        //int i = db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = " + car.getID(),  new String[] { String.valueOf(car.getID()) });
-        Log.d("DEBUG", "In JCGSQLite updatecar" + i);
+       // int i = db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = ?",  new String[] { String.valueOf(car.getID()) });
+       // int i = db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = " + car.getID(),  null);
+       /* db.execSQL("UPDATE " + CARS_TABLE_NAME + " SET licence='" + values.get("licence") + "', brand='" + values.get("brand") +
+                "', usage='" + values.get("usage") + "', insurance='" + values.get("insurance") +
+                "' , inspection='" + values.get("inspection") + "', tax='" + values.get("tax") +
+                "' , fire='" + values.get("fire") + "', medical='" + values.get("medical") +
+                "' , rate='" + values.get("rate") + "', insurance='" + values.get("rate") + "' WHERE id=" +
+                car.getID() + ";");
+              //  Log.d("DEBUG", "In JCGSQLite updatecar" + i);
+        Log.d("DEBUG", "UPDATE " + CARS_TABLE_NAME + " SET licence='" + values.get("licence") + "',brand='" + values.get("brand") +
+                "', usage='" + values.get("usage") + "', insurance='" + values.get("insurance") +
+                "' , inspection='" + values.get("inspection") + "', tax='" + values.get("tax") +
+                "' , fire='" + values.get("fire") + "', medical='" + values.get("medical") +
+                "' , usage='" + values.get("rate") + "', insurance='" + values.get("rate") + "' WHERE id=" +
+                car.getID() + ";");*/
+
+        db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = ?", new String[]{String.valueOf(car.getID())});
 
         db.close();
-        return i;
+        //return i;
     }
 
     // Deleting single car
