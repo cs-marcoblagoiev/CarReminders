@@ -18,9 +18,27 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is where the settings will be displayed"
-        android:id="@+id/textView10"
-        android:textSize="30dp"/>
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/settings_text"
+        android:id="@+id/textView11" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkbox_one"
+        android:id="@+id/checkBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkbox_two"
+        android:id="@+id/checkBox2" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkbox_three"
+        android:id="@+id/checkBox3" />
 </LinearLayout>
 
 
