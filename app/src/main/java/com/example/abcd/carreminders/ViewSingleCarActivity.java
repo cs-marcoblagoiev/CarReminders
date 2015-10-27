@@ -5,9 +5,9 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -165,7 +165,7 @@ public class ViewSingleCarActivity extends BaseActivity {
         final EditText input = new EditText(getApplicationContext());
         // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
         //input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setTextColor(Color.parseColor("#000000"));
         builder.setView(input);
 
         // Set up the buttons
@@ -197,8 +197,10 @@ public class ViewSingleCarActivity extends BaseActivity {
         final EditText input = new EditText(getApplicationContext());
         // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
         //input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        //input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setTextColor(Color.parseColor("#000000"));
         builder.setView(input);
+
 
         // Set up the buttons
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
