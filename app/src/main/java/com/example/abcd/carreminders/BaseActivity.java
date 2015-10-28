@@ -92,6 +92,7 @@ public class BaseActivity extends AppCompatActivity
             startActivity(intent);
             finish();
         } else if (id == R.id.navShare) {
+            shareapp();
 
         } else if (id == R.id.navSend) {
 
@@ -100,6 +101,15 @@ public class BaseActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void shareapp(){
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT,
+                "Hey check out my app at: https://play.google.com/");
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 
 

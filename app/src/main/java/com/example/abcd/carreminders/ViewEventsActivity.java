@@ -19,18 +19,6 @@ public class ViewEventsActivity extends BaseActivity {
     List<Car> carList;
     List<Event> eventList;
     List<Event> eventList2;
-    //storing all the infos for the car so we can display them later
-/*
-    List<String> licencePlatesList;
-    List<String> eventType;
-    List<String> eventDate;
-    //will contain all the dates except the null ones
-    List<String> eventDate2;
-    //will contain all the dates except the null ones in date format
-    List<Date> eventDate3;
-
-    int i = 0;
-*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
