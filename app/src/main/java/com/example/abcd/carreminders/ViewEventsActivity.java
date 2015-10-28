@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -12,7 +11,10 @@ public class ViewEventsActivity extends BaseActivity {
 
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);
     List<Car> carList;
+    List<Event> eventList;
+    List<Event> eventList2;
     //storing all the infos for the car so we can display them later
+/*
     List<String> licencePlatesList;
     List<String> eventType;
     List<String> eventDate;
@@ -22,6 +24,7 @@ public class ViewEventsActivity extends BaseActivity {
     List<Date> eventDate3;
 
     int i = 0;
+*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,21 +33,47 @@ public class ViewEventsActivity extends BaseActivity {
         super.onCreateDrawer(savedInstanceState);
 
         // get all the cars
-        carList=new ArrayList<Car>();
+        carList = new ArrayList<Car>();
         carList = db.getAllCars();
-        licencePlatesList = new ArrayList<String>();
+        eventList = new ArrayList<Event>();
+        eventList2 = new ArrayList<Event>();
+ /*       licencePlatesList = new ArrayList<String>();
         eventType = new ArrayList<String>();
         eventDate = new ArrayList<String>();
         eventDate2 = new ArrayList<String>();
-        eventDate3 = new ArrayList<Date>();
+        eventDate3 = new ArrayList<Date>();*/
 
 
-        Iterator it= carList.iterator();
+        Iterator it = carList.iterator();
 
         //iterating trough all the cars in the db
-        while (it.hasNext()){
-            Car car = (Car)it.next();
+        while (it.hasNext()) {
+            Car car = (Car) it.next();
+            eventList.add(new Event(car.getLicence(), car.getInsurance(), "Insurance"));
+            eventList.add(new Event(car.getLicence(), car.getInspection(), "Inspection"));
+            eventList.add(new Event(car.getLicence(), car.getTax(), "Road Tax"));
+            eventList.add(new Event(car.getLicence(), car.getFire(), "Fire Extinguisher"));
+            eventList.add(new Event(car.getLicence(), car.getMedical(), "Medical Kit"));
+            eventList.add(new Event(car.getLicence(), car.getRate(), "Rate"));
 
+        }
+
+        Log.d("DEBUGList", eventList.toString());
+
+        Iterator it2 = eventList.iterator();
+
+        while(it2.hasNext()){
+            Event event = (Event) it2.next();
+            if (!event.getDate().equals("")){
+                eventList2.add(event);
+            }
+            //Log.d("DEBUGList", event.getDate());
+        }
+
+        Log.d("DEBUGList", eventList2.toString());
+
+
+/*
             //hardcoding all the data we need
             licencePlatesList.add(i, car.getLicence());
             eventType.add(i, "Insurance");
@@ -88,33 +117,38 @@ public class ViewEventsActivity extends BaseActivity {
 
 
 
-/*        SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy");
         Iterator it3 = eventDate2.iterator();
         while (it3.hasNext()){
-            eventDate3.add(formatter.parse((String) it3.next()));
+            try {
+                eventDate3.add(formatter.parse((String) it3.next()));
+            }
+            catch (ParseException e){
 
-        }*/
-
-/*        formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String dateInString = "7/06/2013";
-        Date date2=null;
-        try {
-             date2= formatter.parse(dateInString);
+            }
         }
-        catch (ParseException e){
-
-        }
-
-        Log.d("DEBUGDate", date2.toString());*/
 
         //logging them for a test
         Log.d("DEBUGList", licencePlatesList.toString());
         Log.d("DEBUGList", eventType.toString());
         Log.d("DEBUGList", eventDate.toString());
         Log.d("DEBUGList", eventDate2.toString());
+        Log.d("DEBUGList", eventDate3.toString());
+
+        //sorting the list cronologically
+        Collections.sort(eventDate3);
 
 
+        Iterator it4 = eventDate3.iterator();
+        while (it4.hasNext()){
+
+        }
 
 
-    }
+        Log.d("DEBUGList", eventDate3.toString());
+
+
+*/
+        }
+
 }
