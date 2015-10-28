@@ -1,5 +1,9 @@
 package com.example.abcd.carreminders;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Event {
     private String licence;
     private String date;
@@ -43,5 +47,17 @@ public class Event {
                 ", date='" + date + '\'' +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public Date getRealDate(){
+        SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy");
+        Date date2=null;
+        try {
+            date2 = formatter.parse(date);
+        }
+        catch (ParseException e){
+
+        }
+        return date2;
     }
 }

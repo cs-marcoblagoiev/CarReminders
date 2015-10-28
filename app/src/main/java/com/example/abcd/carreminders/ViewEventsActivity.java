@@ -2,8 +2,14 @@ package com.example.abcd.carreminders;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -33,16 +39,11 @@ public class ViewEventsActivity extends BaseActivity {
         super.onCreateDrawer(savedInstanceState);
 
         // get all the cars
+        List listevents = new ArrayList();
         carList = new ArrayList<Car>();
         carList = db.getAllCars();
         eventList = new ArrayList<Event>();
         eventList2 = new ArrayList<Event>();
- /*       licencePlatesList = new ArrayList<String>();
-        eventType = new ArrayList<String>();
-        eventDate = new ArrayList<String>();
-        eventDate2 = new ArrayList<String>();
-        eventDate3 = new ArrayList<Date>();*/
-
 
         Iterator it = carList.iterator();
 
@@ -66,89 +67,41 @@ public class ViewEventsActivity extends BaseActivity {
             Event event = (Event) it2.next();
             if (!event.getDate().equals("")){
                 eventList2.add(event);
+                listevents.add(event);
             }
             //Log.d("DEBUGList", event.getDate());
         }
 
         Log.d("DEBUGList", eventList2.toString());
 
-
-/*
-            //hardcoding all the data we need
-            licencePlatesList.add(i, car.getLicence());
-            eventType.add(i, "Insurance");
-            eventDate.add(i, car.getInsurance());
-            i++;
-
-            licencePlatesList.add(i, car.getLicence());
-            eventType.add(i, "Inspection");
-            eventDate.add(i, car.getInspection());
-            i++;
-
-            licencePlatesList.add(i, car.getLicence());
-            eventType.add(i, "Road Tax");
-            eventDate.add(i, car.getTax());
-            i++;
-
-            licencePlatesList.add(i, car.getLicence());
-            eventType.add(i, "Fire Extinguisher");
-            eventDate.add(i, car.getFire());
-            i++;
-
-            licencePlatesList.add(i, car.getLicence());
-            eventType.add(i, "Medical Kit");
-            eventDate.add(i, car.getMedical());
-            i++;
-
-            licencePlatesList.add(i, car.getLicence());
-            eventType.add(i, "Rate");
-            eventDate.add(i, car.getRate());
-            i++;
-
-        }
-
-        Iterator it2 = eventDate.iterator();
-        while(it2.hasNext()){
-            String temp = (String)it2.next();
-            if (!temp.equals("")){
-                eventDate2.add(temp);
-            }
-        }
+        Collections.sort(eventList2, new CustomComparator());
+        //now we have only the events we need, in the order that we need in eventList2
+        Log.d("DEBUGList", eventList2.toString());
 
 
 
-        SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy");
-        Iterator it3 = eventDate2.iterator();
-        while (it3.hasNext()){
-            try {
-                eventDate3.add(formatter.parse((String) it3.next()));
-            }
-            catch (ParseException e){
 
-            }
-        }
+        ListView m_listview = (ListView) findViewById(R.id.list);
 
-        //logging them for a test
-        Log.d("DEBUGList", licencePlatesList.toString());
-        Log.d("DEBUGList", eventType.toString());
-        Log.d("DEBUGList", eventDate.toString());
-        Log.d("DEBUGList", eventDate2.toString());
-        Log.d("DEBUGList", eventDate3.toString());
+        final ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text1, listevents){
+                    //overriding the method so we can use both text items
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        View view = super.getView(position, convertView, parent);
+                        TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                        TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
-        //sorting the list cronologically
-        Collections.sort(eventDate3);
+                        Log.d("DEBUGList", "The size is " + eventList2.size());
 
+                        text1.setText(eventList2.get(position).getDate());
+                        text2.setText(eventList2.get(position).getName() + " " + eventList2.get(position).getLicence());
+                        return view;
+                    }
+                };
 
-        Iterator it4 = eventDate3.iterator();
-        while (it4.hasNext()){
+        m_listview.setAdapter(adapter);
 
-        }
-
-
-        Log.d("DEBUGList", eventDate3.toString());
-
-
-*/
         }
 
 }
