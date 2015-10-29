@@ -56,15 +56,15 @@ public class ViewSingleCarActivity extends BaseActivity {
         car = db.findCar(id);
 
 
-        listFields.add(0, R.string.licence_plate);
-        listFields.add(1, R.string.brand_model);
-        listFields.add(2, R.string.usage);
-        listFields.add(3, R.string.insurance);
-        listFields.add(4, R.string.vehicle_inspection);
-        listFields.add(5, R.string.road_tax);
-        listFields.add(6, R.string.fire_extinguisher);
-        listFields.add(7, R.string.medical_kit);
-        listFields.add(8, R.string.rate);
+        listFields.add(0, getResources().getString(R.string.licence_plate));
+        listFields.add(1, getResources().getString(R.string.brand_model));
+        listFields.add(2, getResources().getString(R.string.usage));
+        listFields.add(3, getResources().getString(R.string.insurance));
+        listFields.add(4, getResources().getString(R.string.vehicle_inspection));
+        listFields.add(5, getResources().getString(R.string.road_tax));
+        listFields.add(6, getResources().getString(R.string.fire_extinguisher));
+        listFields.add(7, getResources().getString(R.string.medical_kit));
+        listFields.add(8, getResources().getString(R.string.rate));
 
         listValues.add(0, car.getLicence());
         listValues.add(1, car.getBrand());

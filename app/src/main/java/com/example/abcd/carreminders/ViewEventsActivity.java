@@ -38,12 +38,12 @@ public class ViewEventsActivity extends BaseActivity {
         //iterating trough all the cars in the db
         while (it.hasNext()) {
             Car car = (Car) it.next();
-            eventList.add(new Event(car.getLicence(), car.getInsurance(), "Insurance"));
-            eventList.add(new Event(car.getLicence(), car.getInspection(), "Inspection"));
-            eventList.add(new Event(car.getLicence(), car.getTax(), "Road Tax"));
-            eventList.add(new Event(car.getLicence(), car.getFire(), "Fire Extinguisher"));
-            eventList.add(new Event(car.getLicence(), car.getMedical(), "Medical Kit"));
-            eventList.add(new Event(car.getLicence(), car.getRate(), "Rate"));
+            eventList.add(new Event(car.getLicence(), car.getInsurance(), getResources().getString(R.string.insurance)));
+            eventList.add(new Event(car.getLicence(), car.getInspection(), getResources().getString(R.string.vehicle_inspection)));
+            eventList.add(new Event(car.getLicence(), car.getTax(), getResources().getString(R.string.road_tax)));
+            eventList.add(new Event(car.getLicence(), car.getFire(), getResources().getString(R.string.fire_extinguisher)));
+            eventList.add(new Event(car.getLicence(), car.getMedical(), getResources().getString(R.string.medical_kit)));
+            eventList.add(new Event(car.getLicence(), car.getRate(), getResources().getString(R.string.rate)));
 
         }
 
