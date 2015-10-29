@@ -13,8 +13,8 @@
     tools:context=".ViewSettingsActivity"
     tools:showIn="@layout/app_bar_view_settings">
 
-<!--http://icons.iconarchive.com/icons/gosquared/flag/64/United-Kingdom-icon.png
--->
+    <!--http://icons.iconarchive.com/icons/gosquared/flag/64/United-Kingdom-icon.png
+    -->
 
     <TextView
         android:id="@+id/textView11"
@@ -48,23 +48,28 @@
         android:text="@string/settings_text_language"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-
-    <RadioButton
+    <RadioGroup
+        android:id="@+id/radioGroupSettings"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioButtonEnglish"
-        android:button="@null"
-        android:text="@string/language_english"
-        android:drawableLeft="@drawable/englishIcon" />
+        android:layout_height="wrap_content">
 
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioButtonRomanian"
-        android:button="@null"
-        android:text="@string/language_romanian"
-        android:drawableLeft="@drawable/romanianIcon"
-        />
+        <RadioButton
+            android:id="@+id/radioButtonEnglish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/englishicon"
+            android:text="@string/language_english" />
+
+        <RadioButton
+            android:id="@+id/radioButtonRomanian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/romanianicon"
+            android:text="@string/language_romanian" />
+
+    </RadioGroup>
 
     <Button
         android:id="@+id/buttonSettings"

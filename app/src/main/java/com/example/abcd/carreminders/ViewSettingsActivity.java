@@ -1,12 +1,21 @@
 package com.example.abcd.carreminders;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 public class ViewSettingsActivity extends BaseActivity {
 
@@ -22,6 +31,9 @@ public class ViewSettingsActivity extends BaseActivity {
         final CheckBox checkBoxMonth = (CheckBox) findViewById(R.id.checkBox);
         final CheckBox checkBoxWeek = (CheckBox) findViewById(R.id.checkBox2);
         final CheckBox checkBoxDay = (CheckBox) findViewById(R.id.checkBox3);
+
+        final RadioGroup radioTypeGroup = (RadioGroup) findViewById(R.id.radioGroupSettings);
+
 
         Button button = (Button) findViewById(R.id.buttonSettings);
 
@@ -51,10 +63,37 @@ public class ViewSettingsActivity extends BaseActivity {
 
                 editor.commit();
 
+                int selectedId = radioTypeGroup.getCheckedRadioButtonId();
+
+                // find the radiobutton by returned id
+                RadioButton selectedRadioButton = (RadioButton) findViewById(selectedId);
+
+                Log.d("DEBUG", "Selected language is " + selectedRadioButton.getId());
+
+                String lang = "en";
+                if (selectedRadioButton.getId() == R.id.radioButtonEnglish){
+                    setLocale("en");
+                }
+                else if (selectedRadioButton.getId() ==  R.id.radioButtonRomanian){
+                    setLocale("ro");
+                }
+
                 Toast.makeText(ViewSettingsActivity.this, R.string.saved_setting , Toast.LENGTH_LONG).show();
 
 
             }
         });
+    }
+
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        Intent refresh = new Intent(this, ViewSettingsActivity.class);
+        startActivity(refresh);
+        finish();
     }
 }
