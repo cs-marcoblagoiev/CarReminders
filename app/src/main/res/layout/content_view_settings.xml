@@ -51,7 +51,8 @@
     <RadioGroup
         android:id="@+id/radioGroupSettings"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:checkedButton="@+id/radioButtonEnglish">
 
         <RadioButton
             android:id="@+id/radioButtonEnglish"

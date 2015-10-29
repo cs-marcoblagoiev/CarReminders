@@ -78,6 +78,8 @@ public class ViewSettingsActivity extends BaseActivity {
                     setLocale("ro");
                 }
 
+                //editor.putString("language", lang);
+
                 Toast.makeText(ViewSettingsActivity.this, R.string.saved_setting , Toast.LENGTH_LONG).show();
 
 
