@@ -51,7 +51,7 @@ public class ViewSettingsActivity extends BaseActivity {
 
                 editor.commit();
 
-                Toast.makeText(ViewSettingsActivity.this, "Settings saved", Toast.LENGTH_LONG).show();
+                Toast.makeText(ViewSettingsActivity.this, R.string.saved_setting , Toast.LENGTH_LONG).show();
 
 
             }

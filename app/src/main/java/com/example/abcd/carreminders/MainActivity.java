@@ -145,7 +145,7 @@ public class MainActivity extends BaseActivity {
 
                     db.createCar(car);
 
-                    Toast.makeText(getApplicationContext(), "Car added to database", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.toast_car_added, Toast.LENGTH_LONG).show();
                 }
             }
         });

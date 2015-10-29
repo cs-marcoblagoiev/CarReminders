@@ -30,4 +30,16 @@
     <string name="checkbox_two">One week before expiry date</string>
     <string name="checkbox_three">One day before expiry date</string>
     <string name="save_settings">Save setting</string>
+
+    <string name="sharing_string">Hey check out my app at: https://play.google.com/"</string>
+    <string name="toast_car_added">Car added to database</string>
+    <string name="saved_setting">Settings saved</string>
+    <string name="toast_car_updated">Car updated</string>
+    <string name="toast_car_deleted">Car deleted</string>
+
+    <string name="settings_text_language">Select the language:</string>
+    <string name="language_english">English</string>
+    <string name="language_romanian">Romanian</string>
+
+
 </resources>

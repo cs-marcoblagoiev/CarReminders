@@ -56,15 +56,15 @@ public class ViewSingleCarActivity extends BaseActivity {
         car = db.findCar(id);
 
 
-        listFields.add(0, "Licence Plate");
-        listFields.add(1, "Brand, model");
-        listFields.add(2, "Usage");
-        listFields.add(3, "Insurance");
-        listFields.add(4, "Vehicle Inspection");
-        listFields.add(5, "Road Tax");
-        listFields.add(6, "Fire Extinguisher");
-        listFields.add(7, "Medical Kit");
-        listFields.add(8, "Rate");
+        listFields.add(0, R.string.licence_plate);
+        listFields.add(1, R.string.brand_model);
+        listFields.add(2, R.string.usage);
+        listFields.add(3, R.string.insurance);
+        listFields.add(4, R.string.vehicle_inspection);
+        listFields.add(5, R.string.road_tax);
+        listFields.add(6, R.string.fire_extinguisher);
+        listFields.add(7, R.string.medical_kit);
+        listFields.add(8, R.string.rate);
 
         listValues.add(0, car.getLicence());
         listValues.add(1, car.getBrand());
@@ -83,7 +83,7 @@ public class ViewSingleCarActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 db.updateCar(car);
-                Toast.makeText(getApplicationContext(), "Car updated", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.toast_car_updated, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -91,7 +91,7 @@ public class ViewSingleCarActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 db.deleteCar(car);
-                Toast.makeText(getApplicationContext(), "Car deleted", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.toast_car_deleted, Toast.LENGTH_LONG).show();
             }
         });
 

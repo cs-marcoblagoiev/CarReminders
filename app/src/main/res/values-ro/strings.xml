@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Car Reminders</string>
+
+    <string name="navigation_drawer_open">Deschide meniu</string>
+    <string name="navigation_drawer_close">Inchide meniu</string>
+
+    <string name="action_settings">Setari</string>
+
+    <string name="licence_plate">Numar inmatriculare</string>
+    <string name="brand_model">Firma, model</string>
+    <string name="usage">Utilizare</string>
+    <string name="normal">Normal</string>
+    <string name="taxi">Taxi</string>
+    <string name="transport">Transport</string>
+    <string name="insurance">Asigurare</string>
+    <string name="vehicle_inspection">ITP</string>
+    <string name="road_tax">Taxa drum</string>
+    <string name="fire_extinguisher">Extinctor</string>
+    <string name="medical_kit">Trusa medicala</string>
+    <string name="rate">Rata</string>
+
+    <string name="add_button">Adaugati masina</string>
+    <string name="update_button">Actualizati masina</string>
+    <string name="delete_button">Stergeti masina</string>
+
+    <string name="promptText">Introduceti valoarea noua:</string>
+
+    <string name="settings_text">Alegeti cand doriti sa primiti notificari:</string>
+    <string name="checkbox_one">Cu o luna inate de data de expirare</string>
+    <string name="checkbox_two">Cu o saptamana inainte de data de expirare</string>
+    <string name="checkbox_three">Cu o zi inainte de data de expirare</string>
+    <string name="save_settings">Salvati setarile</string>
+
+    <string name="sharing_string">Hey check out my app at: https://play.google.com/"</string>
+    <string name="toast_car_added">Masina adaugata in baza de date</string>
+    <string name="saved_setting">Salvari setate</string>
+    <string name="toast_car_updated">Masina actualizata</string>
+    <string name="toast_car_deleted">Masina stearsa</string>
+
+    <string name="settings_text_language">Alegeti limba:</string>
+    <string name="language_english">Engleza</string>
+    <string name="language_romanian">Romana</string>
+
+
+</resources>
