@@ -29,6 +29,10 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
     public static final String CARS_COLUMN_MEDICAL = "medical";
     public static final String CARS_COLUMN_RATE = "rate";
 
+
+    //TODO tire rotation, oil change, parking, filtre, antigel
+
+
     private static final String[] COLUMNS = {CARS_COLUMN_ID, CARS_COLUMN_LICENCE, CARS_COLUMN_BRAND,
             CARS_COLUMN_USAGE, CARS_COLUMN_INSURANCE, CARS_COLUMN_INSPECTION, CARS_COLUMN_TAX,
             CARS_COLUMN_FIRE, CARS_COLUMN_MEDICAL, CARS_COLUMN_RATE};

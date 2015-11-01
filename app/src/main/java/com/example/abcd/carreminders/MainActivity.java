@@ -10,9 +10,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 public class MainActivity extends BaseActivity {
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);
 
@@ -149,26 +146,12 @@ public class MainActivity extends BaseActivity {
 
                     db.createCar(car);
 
-                    startAlarm(insurance);
                     Toast.makeText(getApplicationContext(), R.string.toast_car_added, Toast.LENGTH_LONG).show();
                 }
             }
         });
-
     }
 
-    public void startAlarm(String date){
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
-        try {
-            cal.setTime(sdf.parse(date));// all done
-        }catch (Exception e){ }
-        cal.set(Calendar.HOUR_OF_DAY, 10);
-        cal.set(Calendar.MINUTE, 30);
-
-        Log.d("DebugAlarm", "Exiting startAlarm");
-    }
 
 
 }

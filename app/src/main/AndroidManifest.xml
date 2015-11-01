@@ -11,6 +11,7 @@
 
         <!-- Permission to start Alarm on device reboot -->
         <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+        <uses-permission android:name="android.permission.WAKE_LOCK" />
 
         <activity
             android:name=".MainActivity"
@@ -30,14 +31,6 @@
         </activity>
         <activity android:name=".ViewSingleCarActivity" >
         </activity>
-
-        <!-- Will not be called unless the application explicitly enables it -->
-        <receiver android:name=".DeviceBootReceiver"
-            android:enabled="false">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-            </intent-filter>
-        </receiver>
 
 
     </application>
