@@ -1,5 +1,8 @@
 package com.example.abcd.carreminders;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +12,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class MainActivity extends BaseActivity {
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);
@@ -150,8 +155,31 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+
+        setAlarm();
     }
 
 
+    public void setAlarm(){
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        Intent alarmIntent = new Intent(MainActivity.this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(  MainActivity.this, 0, alarmIntent, 0);
+
+        Calendar alarmStartTime=Calendar.getInstance();
+        alarmStartTime.set(Calendar.HOUR_OF_DAY, 23);
+        alarmStartTime.set(Calendar.MINUTE, 10);
+        alarmStartTime.set(Calendar.SECOND, 0);
+        alarmManager.setRepeating(AlarmManager.RTC, alarmStartTime.getTimeInMillis(), getInterval(), pendingIntent);
+        Log.d("DebugAlarm", "Exiting setAlarm");
+    }
+    private int getInterval(){
+        int days = 1;
+        int hours = 24;
+        int minutes = 60;
+        int seconds = 60;
+        int milliseconds = 1000;
+        int repeatMS = days * hours * minutes * seconds * milliseconds;
+        return repeatMS;
+    }
 
 }

@@ -32,7 +32,8 @@
         <activity android:name=".ViewSingleCarActivity" >
         </activity>
 
-
+        <receiver android:name=".AlarmReceiver"  android:enabled="true"/>
+        <service android:name=".AlarmService" />
     </application>
 
 </manifest>
