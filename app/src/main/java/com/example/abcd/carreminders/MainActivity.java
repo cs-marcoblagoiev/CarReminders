@@ -15,8 +15,6 @@ import java.util.Calendar;
 
 public class MainActivity extends BaseActivity {
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);
-    // This is a handle so that we can call methods on our service
-    private ScheduleClient scheduleClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +41,6 @@ public class MainActivity extends BaseActivity {
 
         //radiobuttons
         final RadioGroup radioTypeGroup = (RadioGroup) findViewById(R.id.radioGroup);
-
-        // Create a new service client and bind our activity to this service
-        scheduleClient = new ScheduleClient(this);
-        scheduleClient.doBindService();
 
         //insurance click listener
         editTextInsurance.setOnClickListener(new View.OnClickListener() {
@@ -161,11 +155,9 @@ public class MainActivity extends BaseActivity {
                     } catch (Exception e){
 
                     }
-                    // Ask our service to set an alarm for that date, this activity talks to the client that talks to the service
-                    scheduleClient.setAlarmForNotification(c);
 
 
-                    //Toast.makeText(getApplicationContext(), R.string.toast_car_added, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.toast_car_added, Toast.LENGTH_LONG).show();
                 }
             }
         });
