@@ -10,9 +10,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class MainActivity extends BaseActivity {
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);
-
+    // This is a handle so that we can call methods on our service
+    private ScheduleClient scheduleClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,10 @@ public class MainActivity extends BaseActivity {
         //radiobuttons
         final RadioGroup radioTypeGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
+        // Create a new service client and bind our activity to this service
+        scheduleClient = new ScheduleClient(this);
+        scheduleClient.doBindService();
+
         //insurance click listener
         editTextInsurance.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +58,8 @@ public class MainActivity extends BaseActivity {
                 Log.d("DEBUG", "In calling updateDisplay from Main Activity ");
 /*                //licenceEdit.updateDisplay();
                 Log.d("DEBUG", "Done calling updateDisplay from MianActivity ");*/
+
+
             }
         });
 
@@ -144,8 +154,18 @@ public class MainActivity extends BaseActivity {
                             inspection, tax, fire, medical, rate);
 
                     db.createCar(car);
+                    Calendar c=Calendar.getInstance();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    try {
+                        c.setTime(sdf.parse(insurance));
+                    } catch (Exception e){
 
-                    Toast.makeText(getApplicationContext(), R.string.toast_car_added, Toast.LENGTH_LONG).show();
+                    }
+                    // Ask our service to set an alarm for that date, this activity talks to the client that talks to the service
+                    scheduleClient.setAlarmForNotification(c);
+
+
+                    //Toast.makeText(getApplicationContext(), R.string.toast_car_added, Toast.LENGTH_LONG).show();
                 }
             }
         });
