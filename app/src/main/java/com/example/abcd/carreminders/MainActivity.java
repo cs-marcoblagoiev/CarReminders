@@ -1,8 +1,9 @@
 package com.example.abcd.carreminders;
 
-import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainActivity extends BaseActivity {
@@ -126,17 +128,17 @@ public class MainActivity extends BaseActivity {
                 final String rate = editTextRate.getText().toString();
 
 
-                if (licencePlate == null || licencePlate.length()==0 ){
-                    Toast.makeText(getApplicationContext(), "Licence plate cannot be empty" , Toast.LENGTH_LONG).show();
+                if (licencePlate == null || licencePlate.length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Licence plate cannot be empty", Toast.LENGTH_LONG).show();
                     Log.d("DEBUG", "Licence plate empty");
                     Log.d("DEBUG", "licencePlate" + licencePlate.toString());
                     Log.d("DEBUG", "editTextLicencePlate" + editTextLicencePlate.getText().toString());
-                } else if (brand == null || brand.length()==0 ){
+                } else if (brand == null || brand.length() == 0) {
                     Toast.makeText(getApplicationContext(), "Brand and model cannot be empty", Toast.LENGTH_LONG).show();
                     Log.d("DEBUG", "Brand and model empty");
                     Log.d("DEBUG", "brand" + brand.toString());
                     Log.d("DEBUG", "editTextBrand" + editTextBrand.getText().toString());
-                } else{
+                } else {
                     //TODO verifiy that a radiobutton is selected
                     //got the radiobuttons code from here http://www.mkyong.com/android/android-radio-buttons-example/
                     //get selected radio button from radioGroup
@@ -146,40 +148,72 @@ public class MainActivity extends BaseActivity {
                     RadioButton selectedRadioButton = (RadioButton) findViewById(selectedId);
 
                     Log.d("DEBUG", "Selected car type is " + selectedRadioButton.getText());
-                    Car car=new Car(licencePlate, brand, selectedRadioButton.getText().toString(), insurance,
+                    Car car = new Car(licencePlate, brand, selectedRadioButton.getText().toString(), insurance,
                             inspection, tax, fire, medical, rate);
 
                     db.createCar(car);
+
+                    //setting all the alarms
+                    ManageAlarms manageAlarms = new ManageAlarms();
+                    manageAlarms.setAlarm(getApplicationContext(), insurance);
+                    manageAlarms.setAlarm(getApplicationContext(), inspection);
+                    manageAlarms.setAlarm(getApplicationContext(), tax);
+                    manageAlarms.setAlarm(getApplicationContext(), fire);
+                    manageAlarms.setAlarm(getApplicationContext(), medical);
+                    manageAlarms.setAlarm(getApplicationContext(), rate);
 
                     Toast.makeText(getApplicationContext(), R.string.toast_car_added, Toast.LENGTH_LONG).show();
                 }
             }
         });
 
-        setAlarm();
     }
 
 
-    public void setAlarm(){
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        Intent alarmIntent = new Intent(MainActivity.this, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(  MainActivity.this, 0, alarmIntent, 0);
+    public class ManageAlarms {
+        SharedPreferences sharedpreferences;
+        public static final String MyPREFERENCES = "MyPrefs" ;
 
-        Calendar alarmStartTime=Calendar.getInstance();
-        alarmStartTime.set(Calendar.HOUR_OF_DAY, 23);
-        alarmStartTime.set(Calendar.MINUTE, 10);
-        alarmStartTime.set(Calendar.SECOND, 0);
-        alarmManager.setRepeating(AlarmManager.RTC, alarmStartTime.getTimeInMillis(), getInterval(), pendingIntent);
-        Log.d("DebugAlarm", "Exiting setAlarm");
-    }
-    private int getInterval(){
-        int days = 1;
-        int hours = 24;
-        int minutes = 60;
-        int seconds = 60;
-        int milliseconds = 1000;
-        int repeatMS = days * hours * minutes * seconds * milliseconds;
-        return repeatMS;
+
+        public void setAlarm(Context context, String date){
+            android.app.AlarmManager alarmManager = (android.app.AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+            Intent alarmIntent = new Intent(MainActivity.this, AlarmReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, alarmIntent, 0);
+
+            sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                cal.setTime(sdf.parse(date));// all done
+            } catch (Exception e){ }
+
+
+            cal.set(Calendar.HOUR_OF_DAY, 10);
+            cal.set(Calendar.MINUTE, 00);
+            cal.set(Calendar.SECOND, 0);
+            if (sharedpreferences.getBoolean("month", true)){
+                Calendar cal2 = cal;
+                cal2.add(Calendar.MONTH, -1);
+                alarmManager.set(android.app.AlarmManager.RTC, cal2.getTimeInMillis(), pendingIntent);
+            }
+
+            if (sharedpreferences.getBoolean("week", true)){
+                Calendar cal3 = cal;
+                cal3.add(Calendar.DAY_OF_MONTH, -7);
+                alarmManager.set(android.app.AlarmManager.RTC, cal3.getTimeInMillis(), pendingIntent);
+            }
+
+            if (sharedpreferences.getBoolean("day", true)){
+                Calendar cal4 = cal;
+                cal4.add(Calendar.DAY_OF_MONTH, -1);
+                alarmManager.set(android.app.AlarmManager.RTC, cal4.getTimeInMillis(), pendingIntent);
+            }
+            alarmManager.set(android.app.AlarmManager.RTC, cal.getTimeInMillis(), pendingIntent);
+            Log.d("DebugAlarm", "Exiting setAlarm");
+        }
+
+
     }
 
 }

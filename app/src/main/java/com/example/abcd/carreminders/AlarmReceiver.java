@@ -5,7 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-
+//http://www.banane.com/2014/05/07/simple-example-of-scheduled-self-clearing-android-notifications/
 public class AlarmReceiver extends BroadcastReceiver {
 
     NotificationManager notificationManager;

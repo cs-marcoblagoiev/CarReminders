@@ -9,8 +9,10 @@ import android.os.IBinder;
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
+import java.util.Random;
+
 public class AlarmService extends Service {
-    private static final int NOTIFICATION_ID = 1;
+    private static int NOTIFICATION_ID=0;
     private NotificationManager notificationManager;
     private PendingIntent pendingIntent;
 
@@ -27,11 +29,13 @@ public class AlarmService extends Service {
     {
         super.onStart(intent, startId);
         Context context = this.getApplicationContext();
+        Random r=new Random();
+        NOTIFICATION_ID = r.nextInt(50000);
         notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
         Intent mIntent = new Intent(this, MainActivity.class);
         pendingIntent = PendingIntent.getActivity(context, 0, mIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-        builder.setContentTitle("Bananas");
+        builder.setContentTitle("Car Reminders");
         builder.setContentText("get your bananas");
         builder.setSmallIcon(R.drawable.englishicon);
         builder.setContentIntent(pendingIntent);
