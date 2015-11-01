@@ -148,20 +148,26 @@ public class MainActivity extends BaseActivity {
                             inspection, tax, fire, medical, rate);
 
                     db.createCar(car);
-                    Calendar c=Calendar.getInstance();
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                    try {
-                        c.setTime(sdf.parse(insurance));
-                    } catch (Exception e){
 
-                    }
-
-
+                    startAlarm(insurance);
                     Toast.makeText(getApplicationContext(), R.string.toast_car_added, Toast.LENGTH_LONG).show();
                 }
             }
         });
 
+    }
+
+    public void startAlarm(String date){
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            cal.setTime(sdf.parse(date));// all done
+        }catch (Exception e){ }
+        cal.set(Calendar.HOUR_OF_DAY, 10);
+        cal.set(Calendar.MINUTE, 30);
+
+        Log.d("DebugAlarm", "Exiting startAlarm");
     }
 
 
