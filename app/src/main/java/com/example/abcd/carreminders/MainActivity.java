@@ -155,12 +155,25 @@ public class MainActivity extends BaseActivity {
 
                     //setting all the alarms
                     ManageAlarms manageAlarms = new ManageAlarms();
-                    manageAlarms.setAlarm(getApplicationContext(), insurance);
+                    if (insurance !=null)
+                        manageAlarms.setAlarm(getApplicationContext(), insurance);
+
+                    if (inspection!=null)
                     manageAlarms.setAlarm(getApplicationContext(), inspection);
+
+                    if(tax!=null)
                     manageAlarms.setAlarm(getApplicationContext(), tax);
+
+                    if(fire!=null)
                     manageAlarms.setAlarm(getApplicationContext(), fire);
+
+                    if(medical!=null)
                     manageAlarms.setAlarm(getApplicationContext(), medical);
+
+                    if(rate!=null)
                     manageAlarms.setAlarm(getApplicationContext(), rate);
+
+                    Log.d("DebugAlarm", rate);
 
                     Toast.makeText(getApplicationContext(), R.string.toast_car_added, Toast.LENGTH_LONG).show();
                 }
@@ -182,6 +195,7 @@ public class MainActivity extends BaseActivity {
 
             sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
+            //converting the string to a calendar
             Calendar cal = Calendar.getInstance();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             try {
@@ -192,25 +206,32 @@ public class MainActivity extends BaseActivity {
             cal.set(Calendar.HOUR_OF_DAY, 10);
             cal.set(Calendar.MINUTE, 00);
             cal.set(Calendar.SECOND, 0);
-            if (sharedpreferences.getBoolean("month", true)){
-                Calendar cal2 = cal;
-                cal2.add(Calendar.MONTH, -1);
+
+            Calendar calTest = Calendar.getInstance();
+            Log.d("DebugAlarm", "calTest" + calTest.toString());
+
+            Calendar cal2 = cal;
+            cal2.add(Calendar.MONTH, -1);
+            Calendar cal3 = cal;
+            cal3.add(Calendar.DAY_OF_MONTH, -7);
+            Calendar cal4 = cal;
+            cal4.add(Calendar.DAY_OF_MONTH, -1);
+
+            if (sharedpreferences.getBoolean("month", true) && cal2.after(calTest)){
                 alarmManager.set(android.app.AlarmManager.RTC, cal2.getTimeInMillis(), pendingIntent);
+                Log.d("DebugAlarm", "Aded alarm for a month");
             }
 
-            if (sharedpreferences.getBoolean("week", true)){
-                Calendar cal3 = cal;
-                cal3.add(Calendar.DAY_OF_MONTH, -7);
+            if (sharedpreferences.getBoolean("week", true) && cal3.after(calTest)){
                 alarmManager.set(android.app.AlarmManager.RTC, cal3.getTimeInMillis(), pendingIntent);
+                Log.d("DebugAlarm", "Aded alarm for a week");
             }
 
-            if (sharedpreferences.getBoolean("day", true)){
-                Calendar cal4 = cal;
-                cal4.add(Calendar.DAY_OF_MONTH, -1);
+            if (sharedpreferences.getBoolean("day", true) && cal4.after(calTest)){
                 alarmManager.set(android.app.AlarmManager.RTC, cal4.getTimeInMillis(), pendingIntent);
+                Log.d("DebugAlarm", "Aded alarm for a day");
             }
-            alarmManager.set(android.app.AlarmManager.RTC, cal.getTimeInMillis(), pendingIntent);
-            Log.d("DebugAlarm", "Exiting setAlarm");
+             Log.d("DebugAlarm", "Exiting setAlarm");
         }
 
 
