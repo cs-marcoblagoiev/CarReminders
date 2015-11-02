@@ -30,7 +30,7 @@ public class AlarmService extends Service {
         super.onStart(intent, startId);
         Context context = this.getApplicationContext();
         Random r=new Random();
-        NOTIFICATION_ID = r.nextInt(50000);
+        NOTIFICATION_ID = r.nextInt(100000);
         notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
         Intent mIntent = new Intent(this, MainActivity.class);
         pendingIntent = PendingIntent.getActivity(context, 0, mIntent, PendingIntent.FLAG_CANCEL_CURRENT);
