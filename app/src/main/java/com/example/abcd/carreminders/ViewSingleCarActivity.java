@@ -91,6 +91,8 @@ public class ViewSingleCarActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 db.deleteCar(car);
+                ManageAlarms ma = new ManageAlarms();
+                ma.deleteAlarm(getApplicationContext());
                 Toast.makeText(getApplicationContext(), R.string.toast_car_deleted, Toast.LENGTH_LONG).show();
             }
         });
