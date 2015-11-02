@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
@@ -28,17 +29,28 @@ public class AlarmService extends Service {
     public void onStart(Intent intent, int startId)
     {
         super.onStart(intent, startId);
+
+        Bundle bundle = intent.getExtras();
+        String type="", licence="";
+
+        if (bundle != null) {
+            type = bundle.getString("type");
+            licence = bundle.getString("licence");
+        }
+
         Context context = this.getApplicationContext();
         Random r=new Random();
         NOTIFICATION_ID = r.nextInt(100000);
         notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
-        Intent mIntent = new Intent(this, MainActivity.class);
+        Intent mIntent = new Intent(this, ViewEventsActivity.class);
         pendingIntent = PendingIntent.getActivity(context, 0, mIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
         builder.setContentTitle("Car Reminders");
-        builder.setContentText("get your bananas");
+        builder.setContentText(licence + "'s " + type + "is gonna expire in one " );
         builder.setSmallIcon(R.drawable.englishicon);
         builder.setContentIntent(pendingIntent);
+
+        Log.d("DebugAlarm", "IN ALARMSERVICE " + licence + "'s " + type + "is gonna expire in one ");
 
         notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, builder.build());

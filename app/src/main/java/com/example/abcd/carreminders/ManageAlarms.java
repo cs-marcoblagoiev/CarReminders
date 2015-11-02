@@ -16,12 +16,14 @@ public class ManageAlarms{
     static int i=0;
 
 
-    public void setAlarm(Context context, String date){
+    public void setAlarm(Context context, String date, String type, String licence){
         sharedpreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         i=sharedpreferences.getInt("lastId", 0);
         Log.d("DebugAlarm", "Getting lastId "+ i);
         android.app.AlarmManager alarmManager = (android.app.AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent alarmIntent = new Intent(context, AlarmReceiver.class);
+        alarmIntent.putExtra("type", type);
+        alarmIntent.putExtra("licence", licence);
         //the second param was 0
         PendingIntent pendingIntent;
 
@@ -101,6 +103,11 @@ public class ManageAlarms{
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putInt("lastId", i);
         editor.commit();
+    }
+
+    public void setAlarmForAllCars(Context context){
+
+
     }
 
 }

@@ -1,9 +1,5 @@
 package com.example.abcd.carreminders;
 
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,10 +9,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Random;
 
 public class MainActivity extends BaseActivity {
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);
@@ -157,22 +149,22 @@ public class MainActivity extends BaseActivity {
                     //setting all the alarms
                     ManageAlarms manageAlarms = new ManageAlarms();
                     if (!insurance.isEmpty())
-                        manageAlarms.setAlarm(getApplicationContext(), insurance);
+                        manageAlarms.setAlarm(getApplicationContext(), insurance, "insurance", licencePlate);
 
                     if (!inspection.isEmpty())
-                    manageAlarms.setAlarm(getApplicationContext(), inspection);
+                    manageAlarms.setAlarm(getApplicationContext(), inspection, "inspection", licencePlate);
 
                     if(!tax.isEmpty())
-                    manageAlarms.setAlarm(getApplicationContext(), tax);
+                    manageAlarms.setAlarm(getApplicationContext(), tax, "tax", licencePlate);
 
                     if(!fire.isEmpty())
-                    manageAlarms.setAlarm(getApplicationContext(), fire);
+                    manageAlarms.setAlarm(getApplicationContext(), fire, "fire", licencePlate);
 
                     if(!medical.isEmpty())
-                    manageAlarms.setAlarm(getApplicationContext(), medical);
+                    manageAlarms.setAlarm(getApplicationContext(), medical, "medical", licencePlate);
 
                     if(!rate.isEmpty())
-                    manageAlarms.setAlarm(getApplicationContext(), rate);
+                    manageAlarms.setAlarm(getApplicationContext(), rate, "rate", licencePlate);
 
                     Log.d("DebugAlarm", "The rate is " +Integer.getInteger(rate));
                     Log.d("DebugAlarm", Boolean.toString(rate.isEmpty()));
