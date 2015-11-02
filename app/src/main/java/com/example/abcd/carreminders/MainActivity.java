@@ -190,9 +190,11 @@ public class MainActivity extends BaseActivity {
 
 
         public void setAlarm(Context context, String date){
+            int i=0;
             android.app.AlarmManager alarmManager = (android.app.AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
             Intent alarmIntent = new Intent(MainActivity.this, AlarmReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, alarmIntent, 0);
+            //the second param was 0
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, i, alarmIntent, 0);
 
             sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
@@ -209,7 +211,7 @@ public class MainActivity extends BaseActivity {
             cal.set(Calendar.SECOND, 0);
 
             Calendar calTest = Calendar.getInstance();
-            Log.d("DebugAlarm", "calTest" + calTest.toString());
+            //Log.d("DebugAlarm", "calTest" + calTest.toString());
 
             Calendar cal2 = cal;
             cal2.add(Calendar.MONTH, -1);
@@ -219,16 +221,19 @@ public class MainActivity extends BaseActivity {
             cal4.add(Calendar.DAY_OF_MONTH, -1);
 
             if (sharedpreferences.getBoolean("month", true) && cal2.after(calTest)){
+                pendingIntent = PendingIntent.getBroadcast(MainActivity.this, i++, alarmIntent, 0);
                 alarmManager.set(android.app.AlarmManager.RTC, cal2.getTimeInMillis(), pendingIntent);
                 Log.d("DebugAlarm", "Aded alarm for a month");
             }
 
             if (sharedpreferences.getBoolean("week", true) && cal3.after(calTest)){
+                pendingIntent = PendingIntent.getBroadcast(MainActivity.this, i++, alarmIntent, 0);
                 alarmManager.set(android.app.AlarmManager.RTC, cal3.getTimeInMillis(), pendingIntent);
                 Log.d("DebugAlarm", "Aded alarm for a week");
             }
 
             if (sharedpreferences.getBoolean("day", true) && cal4.after(calTest)){
+                pendingIntent = PendingIntent.getBroadcast(MainActivity.this, i++, alarmIntent, 0);
                 alarmManager.set(android.app.AlarmManager.RTC, cal4.getTimeInMillis(), pendingIntent);
                 Log.d("DebugAlarm", "Aded alarm for a day");
             }
