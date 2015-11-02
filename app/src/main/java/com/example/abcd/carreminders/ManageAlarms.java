@@ -8,7 +8,6 @@ import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Random;
 
 public class ManageAlarms{
     SharedPreferences sharedpreferences;
@@ -27,15 +26,17 @@ public class ManageAlarms{
         //the second param was 0
         PendingIntent pendingIntent;
 
-
+        Log.d("DebugAlarm", "date is " + date);
 
         //converting the string to a calendar
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {
             cal.setTime(sdf.parse(date));// all done
-        } catch (Exception e){ }
-
+        } catch (Exception e){
+            Log.d("DebugAlarm", "!!!!!!!!!!!!!In exception " );
+        }
+        Log.d("DebugAlarm", "cal is " + cal.toString());
 
         cal.set(Calendar.HOUR_OF_DAY, 10);
         cal.set(Calendar.MINUTE, 00);
@@ -44,20 +45,26 @@ public class ManageAlarms{
         Calendar calTest = Calendar.getInstance();
         //Log.d("DebugAlarm", "calTest" + calTest.toString());
 
-        Calendar cal2 = cal;
+        Calendar cal2 = (Calendar)cal.clone();
         cal2.add(Calendar.MONTH, -1);
-        Calendar cal3 = cal;
+        Calendar cal3 = (Calendar)cal.clone();
         cal3.add(Calendar.DAY_OF_MONTH, -7);
-        Calendar cal4 = cal;
+        Calendar cal4 = (Calendar)cal.clone();
         cal4.add(Calendar.DAY_OF_MONTH, -1);
 
-        Random r=new Random();
+        Log.d("DebugAlarm", "cal is " + cal.toString());
+        Log.d("DebugAlarm", "cal2 is " + cal2.toString());
+        Log.d("DebugAlarm", "cal3 is " + cal3.toString());
+        Log.d("DebugAlarm", "cal4 is " + cal4.toString());
+        Log.d("DebugAlarm", "calTest is " + calTest.toString());
+
+        //Random r=new Random();
 
         if (sharedpreferences.getBoolean("month", true) && cal2.after(calTest)){
             //i=r.nextInt(100000);
             pendingIntent = PendingIntent.getBroadcast(context, i++, alarmIntent, 0);
             alarmManager.set(android.app.AlarmManager.RTC, cal2.getTimeInMillis(), pendingIntent);
-            Log.d("DebugAlarm", "Aded alarm for a month");
+            Log.d("DebugAlarm", "Added alarm for a month");
             Log.d("DebugAlarm", "i is "+ i);
         }
 
@@ -65,7 +72,7 @@ public class ManageAlarms{
             //i=r.nextInt(100000);
             pendingIntent = PendingIntent.getBroadcast(context, i++, alarmIntent, 0);
             alarmManager.set(android.app.AlarmManager.RTC, cal3.getTimeInMillis(), pendingIntent);
-            Log.d("DebugAlarm", "Aded alarm for a week");
+            Log.d("DebugAlarm", "Added alarm for a week");
             Log.d("DebugAlarm", "i is "+ i);
         }
 
@@ -73,7 +80,7 @@ public class ManageAlarms{
             //i=r.nextInt(100000);
             pendingIntent = PendingIntent.getBroadcast(context, i++, alarmIntent, 0);
             alarmManager.set(android.app.AlarmManager.RTC, cal4.getTimeInMillis(), pendingIntent);
-            Log.d("DebugAlarm", "Aded alarm for a day");
+            Log.d("DebugAlarm", "Added alarm for a day");
             Log.d("DebugAlarm", "i is "+ i);
         }
         SharedPreferences.Editor editor = sharedpreferences.edit();
