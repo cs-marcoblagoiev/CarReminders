@@ -31,11 +31,12 @@ public class AlarmService extends Service {
         super.onStart(intent, startId);
 
         Bundle bundle = intent.getExtras();
-        String type="", licence="";
+        String type="", licence="", period="";
 
         if (bundle != null) {
             type = bundle.getString("type");
             licence = bundle.getString("licence");
+            period = bundle.getString("period");
         }
 
         Context context = this.getApplicationContext();
@@ -46,11 +47,11 @@ public class AlarmService extends Service {
         pendingIntent = PendingIntent.getActivity(context, 0, mIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
         builder.setContentTitle("Car Reminders");
-        builder.setContentText(licence + "'s " + type + "is gonna expire in one " );
+        builder.setContentText(licence + "'s " + type + " is going to expire in one " + period);
         builder.setSmallIcon(R.drawable.englishicon);
         builder.setContentIntent(pendingIntent);
 
-        Log.d("DebugAlarm", "IN ALARMSERVICE " + licence + "'s " + type + "is gonna expire in one ");
+        Log.d("DebugAlarm", "IN ALARMSERVICE " + licence + "'s " + type + " is going to expire in one " + period);
 
         notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, builder.build());

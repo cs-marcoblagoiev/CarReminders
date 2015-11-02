@@ -14,15 +14,17 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Bundle bundle = intent.getExtras();
-        String type="", licence="";
+        String type="", licence="", period="";
 
         if (bundle != null) {
             type = bundle.getString("type");
             licence = bundle.getString("licence");
+            period = bundle.getString("period");
         }
         Intent service1 = new Intent(context, AlarmService.class);
         service1.putExtra("type", type);
         service1.putExtra("licence", licence);
+        service1.putExtra("period", period);
 
         context.startService(service1);
         Log.d("DebugAlarm", "In AlarmReceiver");
