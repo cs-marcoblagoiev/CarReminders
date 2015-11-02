@@ -155,25 +155,26 @@ public class MainActivity extends BaseActivity {
 
                     //setting all the alarms
                     ManageAlarms manageAlarms = new ManageAlarms();
-                    if (insurance !=null)
+                    if (!insurance.isEmpty())
                         manageAlarms.setAlarm(getApplicationContext(), insurance);
 
-                    if (inspection!=null)
+                    if (!inspection.isEmpty())
                     manageAlarms.setAlarm(getApplicationContext(), inspection);
 
-                    if(tax!=null)
+                    if(!tax.isEmpty())
                     manageAlarms.setAlarm(getApplicationContext(), tax);
 
-                    if(fire!=null)
+                    if(!fire.isEmpty())
                     manageAlarms.setAlarm(getApplicationContext(), fire);
 
-                    if(medical!=null)
+                    if(!medical.isEmpty())
                     manageAlarms.setAlarm(getApplicationContext(), medical);
 
-                    if(rate!=null)
+                    if(!rate.isEmpty())
                     manageAlarms.setAlarm(getApplicationContext(), rate);
 
-                    Log.d("DebugAlarm", rate);
+                    Log.d("DebugAlarm", "The rate is " +Integer.getInteger(rate));
+                    Log.d("DebugAlarm", Boolean.toString(rate.isEmpty()));
 
                     Toast.makeText(getApplicationContext(), R.string.toast_car_added, Toast.LENGTH_LONG).show();
                 }
