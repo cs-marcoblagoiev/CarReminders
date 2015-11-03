@@ -56,6 +56,6 @@ public class AlarmService extends Service {
         notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, builder.build());
         Log.d("DebugAlarm", "In AlarmService, onStart");
-        Log.d("DebugAlarm", "The start id was" + startId);
+        Log.d("DebugAlarm", "The start id was " + startId);
     }
 }
