@@ -139,9 +139,18 @@ public class MainActivity extends BaseActivity {
 
                     // find the radiobutton by returned id
                     RadioButton selectedRadioButton = (RadioButton) findViewById(selectedId);
+                    String radioButtonText;
 
-                    Log.d("DEBUG", "Selected car type is " + selectedRadioButton.getText());
-                    Car car = new Car(licencePlate, brand, selectedRadioButton.getText().toString(), insurance,
+
+                    if (selectedRadioButton==null){
+                        radioButtonText="";
+                    } else {
+                        radioButtonText= selectedRadioButton.getText().toString();
+                     }
+                    //Log.d("DRadio", selectedRadioButton.getText().toString());
+
+                    Log.d("DEBUG", "Selected car type is " + radioButtonText);
+                    Car car = new Car(licencePlate, brand, radioButtonText, insurance,
                             inspection, tax, fire, medical, rate);
 
                     db.createCar(car);
