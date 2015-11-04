@@ -41,5 +41,12 @@
     <string name="language_english">English</string>
     <string name="language_romanian">Romanian</string>
 
+    <string name="sidebar_add">Add a new car</string>
+    <string name="sidebar_view_cars">View your cars</string>
+    <string name="sidebar_view_events">View future events</string>
+    <string name="sidebar_settings">View settings</string>
+    <string name="sidebar_share_1">Share Car Reminders!</string>
+    <string name="sidebar_share_2">Share</string>
+
 
 </resources>

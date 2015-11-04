@@ -41,5 +41,12 @@
     <string name="language_english">Engleza</string>
     <string name="language_romanian">Romana</string>
 
+    <string name="sidebar_add">Adaugati o masina</string>
+    <string name="sidebar_view_cars">Vizualizati masinile</string>
+    <string name="sidebar_view_events">Evenimente din viitor</string>
+    <string name="sidebar_settings">Setari</string>
+    <string name="sidebar_share_1">Distribuiti Car Reminders!</string>
+    <string name="sidebar_share_2">Distribuiti</string>
+
 
 </resources>

@@ -3,22 +3,20 @@
 
     <group android:checkableBehavior="single">
         <item android:id="@+id/navAddNewCar" android:icon="@android:drawable/ic_menu_camera"
-            android:title="Add new car" />
+            android:title="@string/sidebar_add" />
         <item android:id="@+id/navViewYourCars" android:icon="@android:drawable/ic_menu_gallery"
-            android:title="View your cars" />
+            android:title="@string/sidebar_view_cars" />
         <item android:id="@+id/navViewEvents" android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="View future events" />
+            android:title="@string/sidebar_view_events" />
         <item android:id="@+id/navSettings" android:icon="@android:drawable/ic_menu_manage"
-            android:title="Settings" />
+            android:title="@string/sidebar_settings" />
 
     </group>
 
-    <item android:title="Share this app!">
+    <item android:title="@string/sidebar_share_1">
         <menu>
             <item android:id="@+id/navShare" android:icon="@android:drawable/ic_menu_share"
-                android:title="Share" />
-            <item android:id="@+id/navSend" android:icon="@android:drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="@string/sidebar_share_2" />
         </menu>
     </item>
 
