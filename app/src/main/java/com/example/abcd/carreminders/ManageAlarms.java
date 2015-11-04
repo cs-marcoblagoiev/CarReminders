@@ -95,7 +95,7 @@ public class ManageAlarms {
         Log.d("DebugAlarm", "Exiting setAlarm");
     }
 
-    public void deleteAlarm(Context context) {
+    public void deleteAlarms(Context context) {
         sharedpreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         int j = 0;
         int i = sharedpreferences.getInt("lastId", 1);
@@ -115,6 +115,7 @@ public class ManageAlarms {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putInt("lastId", i);
         editor.commit();
+        setAlarmForAllCars(context);
     }
 
     public void setAlarmForAllCars(Context context) {
@@ -122,12 +123,24 @@ public class ManageAlarms {
         List<Car> list;
         // get all the cars
         list = db.getAllCars();
-        List listCars = new ArrayList();
+
+
+        List<String> stringsList = new ArrayList<String>(list.size());
+        for (Car car : list) {
+            stringsList.add(car.toString());
+        }
+
+        Log.d("DebugAlarm", "The list is: " + list.toString());
+        Log.d("DebugAlarm", "The list is: " + stringsList.toString());
+        //Log.d("DebugAlarm", "The id is: " + list.get(0).toString());
+        Log.d("DebugAlarm", "The size of the list is: " + list.size());
         sharedpreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String type="", date="";
 
         for (int i = 0; i < list.size(); i++) {
-            Car car = db.findCar(i);
+            Log.d("DebugAlarm", "The id inside the 'for' is: " + Integer.parseInt(list.get(i).toString()));
+            Log.d("DebugAlarm", "The id inside the 'for' is: " + list.get(i).toString());
+            Car car = db.findCar(Integer.parseInt(list.get(i).toString()));
             String licence = car.getLicence();
             //TODO change this is we add more fields
             for (int j=0; j< 6; j++){
@@ -222,7 +235,7 @@ public class ManageAlarms {
                 }
 
             }
-            
+
             }
         }
 

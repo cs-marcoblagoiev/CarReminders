@@ -90,9 +90,10 @@ public class ViewSingleCarActivity extends BaseActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //todo return to the old view
                 db.deleteCar(car);
                 ManageAlarms ma = new ManageAlarms();
-                ma.deleteAlarm(getApplicationContext());
+                ma.deleteAlarms(getApplicationContext());
                 Toast.makeText(getApplicationContext(), R.string.toast_car_deleted, Toast.LENGTH_LONG).show();
             }
         });

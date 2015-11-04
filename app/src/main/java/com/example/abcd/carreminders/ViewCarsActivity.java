@@ -30,6 +30,7 @@ public class ViewCarsActivity extends BaseActivity {
         list = db.getAllCars();
         List listCars = new ArrayList();
 
+        Log.d("DebugAlarm", "The list is: " + list.toString());
 
 
         for (int i = 0; i < list.size(); i++) {
