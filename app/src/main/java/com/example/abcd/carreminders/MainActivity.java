@@ -132,7 +132,6 @@ public class MainActivity extends BaseActivity {
                     Log.d("DEBUG", "brand" + brand.toString());
                     Log.d("DEBUG", "editTextBrand" + editTextBrand.getText().toString());
                 } else {
-                    //TODO verifiy that a radiobutton is selected
                     //got the radiobuttons code from here http://www.mkyong.com/android/android-radio-buttons-example/
                     //get selected radio button from radioGroup
                     int selectedId = radioTypeGroup.getCheckedRadioButtonId();

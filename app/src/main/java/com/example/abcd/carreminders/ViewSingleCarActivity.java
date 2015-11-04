@@ -95,6 +95,7 @@ public class ViewSingleCarActivity extends BaseActivity {
                 ManageAlarms ma = new ManageAlarms();
                 ma.deleteAlarms(getApplicationContext());
                 Toast.makeText(getApplicationContext(), R.string.toast_car_deleted, Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -242,7 +243,6 @@ public class ViewSingleCarActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                //TODO verifiy that a radiobutton is selected
                 //got the radiobuttons code from here http://www.mkyong.com/android/android-radio-buttons-example/
                 //get selected radio button from radioGroup
                 int selectedId = radioTypeGroup.getCheckedRadioButtonId();

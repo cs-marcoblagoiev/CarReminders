@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+//TODO change colors of texts
 public class ViewEventsActivity extends BaseActivity {
 
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);

@@ -10,8 +10,6 @@ import android.widget.EditText;
 import java.util.Calendar;
 import java.util.Date;
 
-//TODO limit the days to future days
-//TODO make the deaful value the date of today
 //class borrowed from http://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext
 public class MyEditTextDatePicker  implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
     EditText _editText;
