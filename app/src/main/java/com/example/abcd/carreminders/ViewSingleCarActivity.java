@@ -76,6 +76,9 @@ public class ViewSingleCarActivity extends BaseActivity {
         listValues.add(7, car.getMedical());
         listValues.add(8, car.getRate());
 
+        if (car.getUsage()==null || car.getUsage().equals(""))
+            listValues.add(2, getResources().getString(R.string.click_for_value));
+
         Button updateButton = (Button) findViewById(R.id.updateButton);
         Button deleteButton = (Button) findViewById(R.id.deleteButton);
 

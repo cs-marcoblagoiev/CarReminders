@@ -1,5 +1,6 @@
 package com.example.abcd.carreminders;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,8 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -81,6 +86,14 @@ public class ViewEventsActivity extends BaseActivity {
                         TextView text1 = (TextView) view.findViewById(android.R.id.text1);
                         TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
+                        if (!eventList2.get(position).getDate().equals("") && eventList2.get(position).getDate()!=null) {
+                            String color = "#000000";
+                            color = testDate(eventList2.get(position).getDate());
+                            Log.d("DebugColor", color);
+                            text1.setTextColor(Color.parseColor(color));
+
+                        }
+
                         Log.d("DEBUGList", "The size is " + eventList2.size());
 
                         text1.setText(eventList2.get(position).getDate());
@@ -92,5 +105,41 @@ public class ViewEventsActivity extends BaseActivity {
         m_listview.setAdapter(adapter);
 
         }
+
+    //coloring the date depending on the distance to the current date
+    public String testDate(String text){
+        Date date = getRealDate(text);
+
+        //get the curent time
+        Calendar calendar = Calendar.getInstance();
+        Date curentDate = calendar.getTime();
+
+        long diff = date.getTime() - curentDate.getTime();
+        long seconds = diff / 1000;
+        long minutes = seconds / 60;
+        long hours = minutes / 60;
+        long days = hours / 24;
+
+        if (days>=30){
+            return "#000000";
+        } else if (days>=7) {
+            return "#cc8400";
+        } else if (days>=1) {
+            return "#cc1010";
+        } else return "#000000";
+
+    }
+
+    public Date getRealDate(String date){
+        SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy");
+        Date date2=null;
+        try {
+            date2 = formatter.parse(date);
+        }
+        catch (ParseException e){
+
+        }
+        return date2;
+    }
 
 }

@@ -48,5 +48,7 @@
     <string name="sidebar_share_1">Share Car Reminders!</string>
     <string name="sidebar_share_2">Share</string>
 
+    <string name="click_for_value">Click here to edit</string>
+
 
 </resources>
