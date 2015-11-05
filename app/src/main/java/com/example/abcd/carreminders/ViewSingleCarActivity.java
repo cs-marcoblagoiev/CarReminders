@@ -78,6 +78,18 @@ public class ViewSingleCarActivity extends BaseActivity {
 
         if (car.getUsage()==null || car.getUsage().equals(""))
             listValues.add(2, getResources().getString(R.string.click_for_value));
+        if (car.getInsurance()==null || car.getInsurance().equals(""))
+            listValues.add(3, getResources().getString(R.string.click_for_value));
+        if (car.getInspection()==null || car.getInspection().equals(""))
+            listValues.add(4, getResources().getString(R.string.click_for_value));
+        if (car.getTax()==null || car.getTax().equals(""))
+            listValues.add(5, getResources().getString(R.string.click_for_value));
+        if (car.getFire()==null || car.getFire().equals(""))
+            listValues.add(6, getResources().getString(R.string.click_for_value));
+        if (car.getMedical()==null || car.getMedical().equals(""))
+            listValues.add(7, getResources().getString(R.string.click_for_value));
+        if (car.getRate()==null || car.getRate().equals(""))
+            listValues.add(8, getResources().getString(R.string.click_for_value));
 
         Button updateButton = (Button) findViewById(R.id.updateButton);
         Button deleteButton = (Button) findViewById(R.id.deleteButton);
