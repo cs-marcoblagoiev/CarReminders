@@ -158,23 +158,6 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
         values.put("medical", car.getMedical());
         values.put("rate", car.getRate());
 
-        // update
-       // int i = db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = ?",  new String[] { String.valueOf(car.getID()) });
-       // int i = db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = " + car.getID(),  null);
-       /* db.execSQL("UPDATE " + CARS_TABLE_NAME + " SET licence='" + values.get("licence") + "', brand='" + values.get("brand") +
-                "', usage='" + values.get("usage") + "', insurance='" + values.get("insurance") +
-                "' , inspection='" + values.get("inspection") + "', tax='" + values.get("tax") +
-                "' , fire='" + values.get("fire") + "', medical='" + values.get("medical") +
-                "' , rate='" + values.get("rate") + "', insurance='" + values.get("rate") + "' WHERE id=" +
-                car.getID() + ";");
-              //  Log.d("DEBUG", "In JCGSQLite updatecar" + i);
-        Log.d("DEBUG", "UPDATE " + CARS_TABLE_NAME + " SET licence='" + values.get("licence") + "',brand='" + values.get("brand") +
-                "', usage='" + values.get("usage") + "', insurance='" + values.get("insurance") +
-                "' , inspection='" + values.get("inspection") + "', tax='" + values.get("tax") +
-                "' , fire='" + values.get("fire") + "', medical='" + values.get("medical") +
-                "' , usage='" + values.get("rate") + "', insurance='" + values.get("rate") + "' WHERE id=" +
-                car.getID() + ";");*/
-
         db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = " + String.valueOf(car.getID()), null);
         Log.d("DEBUG", "the car id is " + String.valueOf(car.getID()));
         Log.d("DEBUG", "CARS_TABLE_NAME" + CARS_TABLE_NAME);

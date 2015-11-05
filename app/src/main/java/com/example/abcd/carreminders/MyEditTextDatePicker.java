@@ -8,7 +8,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import java.util.Calendar;
-import java.util.Date;
 
 //class borrowed from http://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext
 public class MyEditTextDatePicker  implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
@@ -54,7 +53,7 @@ public class MyEditTextDatePicker  implements View.OnClickListener, DatePickerDi
         DatePickerDialog dialog =  new DatePickerDialog(_context, this, c.get(Calendar.YEAR),
                 c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
 
-        dialog.getDatePicker().setMinDate(new Date().getTime());
+        dialog.getDatePicker().setMinDate(System.currentTimeMillis());
         dialog.show();
         Log.d("DEBUG", "In onClick ");
 

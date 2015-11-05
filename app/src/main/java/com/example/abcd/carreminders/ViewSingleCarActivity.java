@@ -30,6 +30,7 @@ import java.util.List;
 public class ViewSingleCarActivity extends BaseActivity {
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);
     final List listFields = new ArrayList();
+    final List listValuesDisplay = new ArrayList();
     public final List listValues = new ArrayList();
     Car car;
 
@@ -76,20 +77,36 @@ public class ViewSingleCarActivity extends BaseActivity {
         listValues.add(7, car.getMedical());
         listValues.add(8, car.getRate());
 
-        if (car.getUsage()==null || car.getUsage().equals(""))
-            listValues.add(2, getResources().getString(R.string.click_for_value));
-        if (car.getInsurance()==null || car.getInsurance().equals(""))
-            listValues.add(3, getResources().getString(R.string.click_for_value));
-        if (car.getInspection()==null || car.getInspection().equals(""))
-            listValues.add(4, getResources().getString(R.string.click_for_value));
-        if (car.getTax()==null || car.getTax().equals(""))
-            listValues.add(5, getResources().getString(R.string.click_for_value));
-        if (car.getFire()==null || car.getFire().equals(""))
-            listValues.add(6, getResources().getString(R.string.click_for_value));
-        if (car.getMedical()==null || car.getMedical().equals(""))
-            listValues.add(7, getResources().getString(R.string.click_for_value));
-        if (car.getRate()==null || car.getRate().equals(""))
-            listValues.add(8, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(0, listValues.get(0));
+        listValuesDisplay.add(1, listValues.get(1));
+        if (car.getUsage()==null || car.getUsage().equals("")|| car.getUsage().equals(" "))
+            listValuesDisplay.add(2, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(2, listValues.get(2));
+        if (car.getInsurance()==null || car.getInsurance().equals("") || car.getInsurance().equals(""))
+            listValuesDisplay.add(3, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(3, listValues.get(3));
+        if (car.getInspection()==null || car.getInspection().equals("") || car.getInspection().equals(""))
+            listValuesDisplay.add(4, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(4, listValues.get(4));
+        if (car.getTax()==null || car.getTax().equals("") || car.getTax().equals(""))
+            listValuesDisplay.add(5, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(5, listValues.get(5));
+        if (car.getFire()==null || car.getFire().equals("") || car.getFire().equals(""))
+            listValuesDisplay.add(6, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(6, listValues.get(6));
+        if (car.getMedical()==null || car.getMedical().equals("") || car.getMedical().equals(""))
+            listValuesDisplay.add(7, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(7, listValues.get(7));
+        if (car.getRate()==null || car.getRate().equals("") || car.getRate().equals(""))
+            listValuesDisplay.add(8, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(8, listValues.get(8));
 
         Button updateButton = (Button) findViewById(R.id.updateButton);
         Button deleteButton = (Button) findViewById(R.id.deleteButton);
@@ -130,7 +147,7 @@ public class ViewSingleCarActivity extends BaseActivity {
                         TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
                         text1.setText(listFields.get(position).toString());
-                        text2.setText(listValues.get(position).toString());
+                        text2.setText(listValuesDisplay.get(position).toString());
                         return view;
                     }
                 };

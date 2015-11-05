@@ -48,7 +48,7 @@ public class AlarmService extends Service {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
         builder.setContentTitle("Car Reminders");
         builder.setContentText(licence + "'s " + type + " is going to expire in one " + period);
-        builder.setSmallIcon(R.drawable.englishicon);
+        builder.setSmallIcon(R.drawable.menuicon);
         builder.setContentIntent(pendingIntent);
 
         Log.d("DebugAlarm", "IN ALARMSERVICE " + licence + "'s " + type + " is going to expire in one " + period);
