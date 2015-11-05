@@ -94,9 +94,9 @@ public class BaseActivity extends AppCompatActivity
         } else if (id == R.id.navShare) {
             shareapp();
 
-        } else if (id == R.id.navSend) {
+        } /*else if (id == R.id.navSend) {
 
-        }
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
