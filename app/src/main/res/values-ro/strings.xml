@@ -18,6 +18,14 @@
     <string name="fire_extinguisher">Extinctor</string>
     <string name="medical_kit">Trusa medicala</string>
     <string name="rate">Rata</string>
+    <string name="oil">Schimb ulei</string>
+    <string name="parking">Abonament parcare</string>
+    <string name="eairfilter">Filtru de aer motor</string>
+    <string name="cairfilter">Filtru de are cabina</string>
+    <string name="battery">Baterie</string>
+    <string name="antifreeze">Antigel</string>
+    <string name="tire">Rotire pneuri</string>
+    <string name="wiper">Stergator parbriz</string>
 
     <string name="add_button">Adaugati masina</string>
     <string name="update_button">Actualizati masina</string>
