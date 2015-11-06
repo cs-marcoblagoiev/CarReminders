@@ -14,7 +14,7 @@ import java.util.List;
 public class JCGSQLiteHelper extends SQLiteOpenHelper {
 
     // database version
-    private static final int database_VERSION = 1;
+    private static final int database_VERSION = 2;
     // database name
     public static final String DATABASE_NAME = "MyCarsDB";
     public static final String CARS_TABLE_NAME = "cars";
@@ -28,14 +28,20 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
     public static final String CARS_COLUMN_FIRE = "fire";
     public static final String CARS_COLUMN_MEDICAL = "medical";
     public static final String CARS_COLUMN_RATE = "rate";
-
-
-    //TODO tire rotation, oil change, parking, engine air filter, cabin air filter, windshield wiper, battery, antigel
-
+    public static final String CARS_COLUMN_OIL_CHANGE = "oil";
+    public static final String CARS_COLUMN_PARKING = "parking";
+    public static final String CARS_COLUMN_ENGINE_AIR_FILTER = "eairfilter";
+    public static final String CARS_COLUMN_CABIN_AIR_FILTER = "cairfilter";
+    public static final String CARS_COLUMN_BATTERY = "battery";
+    public static final String CARS_COLUMN_ANTIFREEZE = "antifreeze";
+    public static final String CARS_COLUMN_TIRE_ROTATION = "tire";
+    public static final String CARS_COLUMN_WINDSHIELD_WIPER = "wiper";
 
     private static final String[] COLUMNS = {CARS_COLUMN_ID, CARS_COLUMN_LICENCE, CARS_COLUMN_BRAND,
             CARS_COLUMN_USAGE, CARS_COLUMN_INSURANCE, CARS_COLUMN_INSPECTION, CARS_COLUMN_TAX,
-            CARS_COLUMN_FIRE, CARS_COLUMN_MEDICAL, CARS_COLUMN_RATE};
+            CARS_COLUMN_FIRE, CARS_COLUMN_MEDICAL, CARS_COLUMN_RATE, CARS_COLUMN_OIL_CHANGE, CARS_COLUMN_PARKING,
+            CARS_COLUMN_ENGINE_AIR_FILTER, CARS_COLUMN_CABIN_AIR_FILTER, CARS_COLUMN_BATTERY,
+            CARS_COLUMN_ANTIFREEZE, CARS_COLUMN_TIRE_ROTATION, CARS_COLUMN_WINDSHIELD_WIPER};
 
     public JCGSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, database_VERSION);
@@ -46,7 +52,8 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
         // SQL statement to create cars table
         String CREATE_CARS_TABLE = "CREATE TABLE cars ( " + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "licence text, brand text, usage text, insurance text, inspection text, tax text, " +
-                "fire text, medical text, rate text)";
+                "fire text, medical text, rate text, oil text, eairfilter text, cairfilter text, " +
+                "battery text, antifreeze text, tire text, wiper text)";
         db.execSQL(CREATE_CARS_TABLE);
     }
 
@@ -73,6 +80,14 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
         values.put("fire", car.getFire());
         values.put("medical", car.getMedical());
         values.put("rate", car.getRate());
+        values.put("oil", car.getOil());
+        values.put("parking", car.getParking());
+        values.put("eairfilter", car.getEairfilter());
+        values.put("cairfilter", car.getCairfilter());
+        values.put("battery", car.getBattery());
+        values.put("antifreeze", car.getAntifreeze());
+        values.put("tire", car.getTire());
+        values.put("wiper", car.getWiper());
 
         // insert book
         db.insert(CARS_TABLE_NAME, null, values);
@@ -104,6 +119,14 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
         car.setFire(cursor.getString(7));
         car.setMedical(cursor.getString(8));
         car.setRate(cursor.getString(9));
+        car.setOil(cursor.getString(10));
+        car.setParking(cursor.getString(11));
+        car.setEairfilter(cursor.getString(12));
+        car.setCairfilter(cursor.getString(13));
+        car.setBattery(cursor.getString(14));
+        car.setAntifreeze(cursor.getString(15));
+        car.setTire(cursor.getString(16));
+        car.setTire(cursor.getString(17));
 
         return car;
     }
@@ -133,6 +156,14 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
                 car.setFire(cursor.getString(7));
                 car.setMedical(cursor.getString(8));
                 car.setRate(cursor.getString(9));
+                car.setOil(cursor.getString(10));
+                car.setParking(cursor.getString(11));
+                car.setEairfilter(cursor.getString(12));
+                car.setCairfilter(cursor.getString(13));
+                car.setBattery(cursor.getString(14));
+                car.setAntifreeze(cursor.getString(15));
+                car.setTire(cursor.getString(16));
+                car.setTire(cursor.getString(17));
 
                 // Add book to books
                 cars.add(car);
@@ -157,6 +188,15 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
         values.put("fire", car.getFire());
         values.put("medical", car.getMedical());
         values.put("rate", car.getRate());
+        values.put("oil", car.getOil());
+        values.put("parking", car.getParking());
+        values.put("eairfilter", car.getEairfilter());
+        values.put("cairfilter", car.getCairfilter());
+        values.put("battery", car.getBattery());
+        values.put("antifreeze", car.getAntifreeze());
+        values.put("tire", car.getTire());
+        values.put("wiper", car.getWiper());
+
 
         db.update(CARS_TABLE_NAME, values, CARS_COLUMN_ID + " = " + String.valueOf(car.getID()), null);
         Log.d("DEBUG", "the car id is " + String.valueOf(car.getID()));

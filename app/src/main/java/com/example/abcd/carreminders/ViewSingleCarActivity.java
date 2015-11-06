@@ -66,6 +66,14 @@ public class ViewSingleCarActivity extends BaseActivity {
         listFields.add(6, getResources().getString(R.string.fire_extinguisher));
         listFields.add(7, getResources().getString(R.string.medical_kit));
         listFields.add(8, getResources().getString(R.string.rate));
+        listFields.add(9, getResources().getString(R.string.oil));
+        listFields.add(10, getResources().getString(R.string.parking));
+        listFields.add(11, getResources().getString(R.string.eairfilter));
+        listFields.add(12, getResources().getString(R.string.cairfilter));
+        listFields.add(13, getResources().getString(R.string.battery));
+        listFields.add(14, getResources().getString(R.string.antifreeze));
+        listFields.add(15, getResources().getString(R.string.tire));
+        listFields.add(16, getResources().getString(R.string.wiper));
 
         listValues.add(0, car.getLicence());
         listValues.add(1, car.getBrand());
@@ -76,6 +84,14 @@ public class ViewSingleCarActivity extends BaseActivity {
         listValues.add(6, car.getFire());
         listValues.add(7, car.getMedical());
         listValues.add(8, car.getRate());
+        listValues.add(9, car.getOil());
+        listValues.add(10, car.getParking());
+        listValues.add(11, car.getEairfilter());
+        listValues.add(12, car.getCairfilter());
+        listValues.add(13, car.getBattery());
+        listValues.add(14, car.getAntifreeze());
+        listValues.add(15, car.getTire());
+        listValues.add(16, car.getWiper());
 
         listValuesDisplay.add(0, listValues.get(0));
         listValuesDisplay.add(1, listValues.get(1));
@@ -83,30 +99,46 @@ public class ViewSingleCarActivity extends BaseActivity {
             listValuesDisplay.add(2, getResources().getString(R.string.click_for_value));
         else
             listValuesDisplay.add(2, listValues.get(2));
+
         if (car.getInsurance()==null || car.getInsurance().equals("") || car.getInsurance().equals(""))
             listValuesDisplay.add(3, getResources().getString(R.string.click_for_value));
         else
             listValuesDisplay.add(3, listValues.get(3));
+
         if (car.getInspection()==null || car.getInspection().equals("") || car.getInspection().equals(""))
             listValuesDisplay.add(4, getResources().getString(R.string.click_for_value));
         else
             listValuesDisplay.add(4, listValues.get(4));
+
         if (car.getTax()==null || car.getTax().equals("") || car.getTax().equals(""))
             listValuesDisplay.add(5, getResources().getString(R.string.click_for_value));
         else
             listValuesDisplay.add(5, listValues.get(5));
+
         if (car.getFire()==null || car.getFire().equals("") || car.getFire().equals(""))
             listValuesDisplay.add(6, getResources().getString(R.string.click_for_value));
         else
             listValuesDisplay.add(6, listValues.get(6));
+
         if (car.getMedical()==null || car.getMedical().equals("") || car.getMedical().equals(""))
             listValuesDisplay.add(7, getResources().getString(R.string.click_for_value));
         else
             listValuesDisplay.add(7, listValues.get(7));
+
         if (car.getRate()==null || car.getRate().equals("") || car.getRate().equals(""))
             listValuesDisplay.add(8, getResources().getString(R.string.click_for_value));
         else
             listValuesDisplay.add(8, listValues.get(8));
+
+        if (car.getOil()==null || car.getOil().equals("") || car.getOil().equals(""))
+            listValuesDisplay.add(9, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(9, listValues.get(9));
+
+        if (car.getParking()==null || car.getParking().equals("") || car.getParking().equals(""))
+            listValuesDisplay.add(10, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(10, listValues.get(10));
 
         Button updateButton = (Button) findViewById(R.id.updateButton);
         Button deleteButton = (Button) findViewById(R.id.deleteButton);

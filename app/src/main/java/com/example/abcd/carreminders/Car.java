@@ -12,14 +12,22 @@ public class Car {
     private String fire;
     private String medical;
     private String rate;
+    private String oil;
+    private String parking;
+    private String eairfilter;
+    private String cairfilter;
+    private String battery;
+    private String antifreeze;
+    private String tire;
+    private String wiper;
 
     public Car(){
 
     }
 
-    public Car(String licence, String brand, String usage, String insurance,
-               String inspection, String tax, String fire, String medical, String rate) {
-        this.ID = ID;
+    public Car(String licence, String brand, String usage, String insurance, String inspection,
+               String tax, String fire, String medical, String rate, String oil, String parking,
+               String eairfilter, String cairfilter, String battery, String antifreeze, String tire, String wiper) {
         this.licence = licence;
         this.brand = brand;
         this.usage = usage;
@@ -29,6 +37,14 @@ public class Car {
         this.fire = fire;
         this.medical = medical;
         this.rate = rate;
+        this.oil = oil;
+        this.parking = parking;
+        this.eairfilter = eairfilter;
+        this.cairfilter = cairfilter;
+        this.battery = battery;
+        this.antifreeze = antifreeze;
+        this.tire = tire;
+        this.wiper = wiper;
     }
 
     public int getID() {
@@ -111,7 +127,71 @@ public class Car {
         this.rate = rate;
     }
 
-/*    @Override
+    public String getOil() {
+        return oil;
+    }
+
+    public void setOil(String oil) {
+        this.oil = oil;
+    }
+
+    public String getParking() {
+        return parking;
+    }
+
+    public void setParking(String parking) {
+        this.parking = parking;
+    }
+
+    public String getEairfilter() {
+        return eairfilter;
+    }
+
+    public void setEairfilter(String eairfilter) {
+        this.eairfilter = eairfilter;
+    }
+
+    public String getCairfilter() {
+        return cairfilter;
+    }
+
+    public void setCairfilter(String cairfilter) {
+        this.cairfilter = cairfilter;
+    }
+
+    public String getBattery() {
+        return battery;
+    }
+
+    public void setBattery(String battery) {
+        this.battery = battery;
+    }
+
+    public String getAntifreeze() {
+        return antifreeze;
+    }
+
+    public void setAntifreeze(String antifreeze) {
+        this.antifreeze = antifreeze;
+    }
+
+    public String getTire() {
+        return tire;
+    }
+
+    public void setTire(String tire) {
+        this.tire = tire;
+    }
+
+    public String getWiper() {
+        return wiper;
+    }
+
+    public void setWiper(String wiper) {
+        this.wiper = wiper;
+    }
+
+    /*    @Override
     public String toString() {
         return "Car{" +
                 "ID=" + ID +

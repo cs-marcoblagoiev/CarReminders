@@ -18,6 +18,14 @@
     <string name="fire_extinguisher">Fire Extinguisher</string>
     <string name="medical_kit">Medical Kit</string>
     <string name="rate">Rate</string>
+    <string name="oil">Oil Change</string>
+    <string name="parking">Parking Pass</string>
+    <string name="eairfilter">Engine Air Filter</string>
+    <string name="cairfilter">Cabin Air Filter</string>
+    <string name="battery">Battery</string>
+    <string name="antifreeze">Antifreeze</string>
+    <string name="tire">Tire Rotation</string>
+    <string name="wiper">Windshield Wiper</string>
 
     <string name="add_button">Add Car</string>
     <string name="update_button">Update Car</string>

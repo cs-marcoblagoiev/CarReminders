@@ -28,6 +28,7 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity {
     JCGSQLiteHelper db = new JCGSQLiteHelper(this);
+    int firstPosition;
 
     /*@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -222,6 +223,14 @@ public class MainActivity extends BaseActivity {
         listFields.add(6, getResources().getString(R.string.fire_extinguisher));
         listFields.add(7, getResources().getString(R.string.medical_kit));
         listFields.add(8, getResources().getString(R.string.rate));
+        listFields.add(9, getResources().getString(R.string.oil));
+        listFields.add(10, getResources().getString(R.string.parking));
+        listFields.add(11, getResources().getString(R.string.eairfilter));
+        listFields.add(12, getResources().getString(R.string.cairfilter));
+        listFields.add(13, getResources().getString(R.string.battery));
+        listFields.add(14, getResources().getString(R.string.antifreeze));
+        listFields.add(15, getResources().getString(R.string.tire));
+        listFields.add(16, getResources().getString(R.string.wiper));
 
         listValues.add(0, "");
         listValues.add(1, "");
@@ -232,16 +241,32 @@ public class MainActivity extends BaseActivity {
         listValues.add(6, "");
         listValues.add(7, "");
         listValues.add(8, "");
+        listValues.add(9, "");
+        listValues.add(10, "");
+        listValues.add(11, "");
+        listValues.add(12, "");
+        listValues.add(13, "");
+        listValues.add(14, "");
+        listValues.add(15, "");
+        listValues.add(16, "");
 
-            listValuesDisplay.add(0, getResources().getString(R.string.click_for_value));
-            listValuesDisplay.add(1, getResources().getString(R.string.click_for_value));
-            listValuesDisplay.add(2, getResources().getString(R.string.click_for_value));
-            listValuesDisplay.add(3, getResources().getString(R.string.click_for_value));
-            listValuesDisplay.add(4, getResources().getString(R.string.click_for_value));
-            listValuesDisplay.add(5, getResources().getString(R.string.click_for_value));
-            listValuesDisplay.add(6, getResources().getString(R.string.click_for_value));
-            listValuesDisplay.add(7, getResources().getString(R.string.click_for_value));
-            listValuesDisplay.add(8, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(0, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(1, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(2, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(3, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(4, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(5, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(6, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(7, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(8, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(9, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(10, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(11, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(12, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(13, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(14, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(15, getResources().getString(R.string.click_for_value));
+        listValuesDisplay.add(16, getResources().getString(R.string.click_for_value));
 
         Button addButton = (Button) findViewById(R.id.addButton);
 
@@ -260,47 +285,91 @@ public class MainActivity extends BaseActivity {
                     Toast.makeText(getApplicationContext(), "Brand and model cannot be empty", Toast.LENGTH_LONG).show();
                     Log.d("DEBUG", "Brand and model empty");
 /*                    Log.d("DEBUG", "brand" + brand.toString());
-                    Log.d("DEBUG", "editTextBrand" + editTextBrand.getText().toString())*/;
+                    Log.d("DEBUG", "editTextBrand" + editTextBrand.getText().toString())*/
+                    ;
                 } else {
 
                     //Log.d("DEBUG", "Selected car type is " + radioButtonText);
                     Car car = new Car(listValues.get(0).toString(), listValues.get(1).toString(), listValues.get(2).toString(),
                             listValues.get(3).toString(), listValues.get(4).toString(), listValues.get(5).toString(), listValues.get(6).toString(),
-                            listValues.get(7).toString(), listValues.get(8).toString());
+                            listValues.get(7).toString(), listValues.get(8).toString(), listValues.get(9).toString(),
+                            listValues.get(10).toString(), listValues.get(11).toString(), listValues.get(12).toString(),
+                            listValues.get(13).toString(), listValues.get(14).toString(), listValues.get(15).toString(),
+                            listValues.get(16).toString());
 
                     db.createCar(car);
 
                     //setting all the alarms
                     ManageAlarms manageAlarms = new ManageAlarms();
-                    if (!listValues.get(3).toString().isEmpty() && listValues.get(3)!=null &&
+                    if (!listValues.get(3).toString().isEmpty() && listValues.get(3) != null &&
                             !listValues.get(3).toString().equals(""))
                         manageAlarms.setAlarm(getApplicationContext(), listValues.get(3).toString(),
                                 "insurance", listValues.get(0).toString());
 
-                    if (!listValues.get(4).toString().isEmpty() && listValues.get(4)!=null &&
+                    if (!listValues.get(4).toString().isEmpty() && listValues.get(4) != null &&
                             !listValues.get(4).toString().equals(""))
                         manageAlarms.setAlarm(getApplicationContext(), listValues.get(4).toString(),
                                 "inspection", listValues.get(0).toString());
 
-                    if (!listValues.get(5).toString().isEmpty() && listValues.get(5)!=null &&
+                    if (!listValues.get(5).toString().isEmpty() && listValues.get(5) != null &&
                             !listValues.get(5).toString().equals(""))
                         manageAlarms.setAlarm(getApplicationContext(), listValues.get(5).toString(),
                                 "road tax", listValues.get(0).toString());
 
-                    if (!listValues.get(6).toString().isEmpty() && listValues.get(6)!=null &&
+                    if (!listValues.get(6).toString().isEmpty() && listValues.get(6) != null &&
                             !listValues.get(6).toString().equals(""))
                         manageAlarms.setAlarm(getApplicationContext(), listValues.get(6).toString(),
                                 "fire extinguisher", listValues.get(0).toString());
 
-                    if (!listValues.get(7).toString().isEmpty() && listValues.get(7)!=null &&
+                    if (!listValues.get(7).toString().isEmpty() && listValues.get(7) != null &&
                             !listValues.get(7).toString().equals(""))
                         manageAlarms.setAlarm(getApplicationContext(), listValues.get(7).toString(),
                                 "medical kit", listValues.get(0).toString());
 
-                    if (!listValues.get(8).toString().isEmpty() && listValues.get(8)!=null &&
+                    if (!listValues.get(8).toString().isEmpty() && listValues.get(8) != null &&
                             !listValues.get(8).toString().equals(""))
                         manageAlarms.setAlarm(getApplicationContext(), listValues.get(8).toString(),
                                 "rate", listValues.get(0).toString());
+
+                    if (!listValues.get(9).toString().isEmpty() && listValues.get(9) != null &&
+                            !listValues.get(8).toString().equals(""))
+                        manageAlarms.setAlarm(getApplicationContext(), listValues.get(9).toString(),
+                                "oil", listValues.get(0).toString());
+
+                    if (!listValues.get(10).toString().isEmpty() && listValues.get(10) != null &&
+                            !listValues.get(10).toString().equals(""))
+                        manageAlarms.setAlarm(getApplicationContext(), listValues.get(10).toString(),
+                                "parking pass", listValues.get(0).toString());
+
+                    if (!listValues.get(11).toString().isEmpty() && listValues.get(11) != null &&
+                            !listValues.get(11).toString().equals(""))
+                        manageAlarms.setAlarm(getApplicationContext(), listValues.get(11).toString(),
+                                "engine air filter", listValues.get(0).toString());
+
+                    if (!listValues.get(12).toString().isEmpty() && listValues.get(12) != null &&
+                            !listValues.get(12).toString().equals(""))
+                        manageAlarms.setAlarm(getApplicationContext(), listValues.get(12).toString(),
+                                "cabin air filter", listValues.get(0).toString());
+
+                    if (!listValues.get(13).toString().isEmpty() && listValues.get(13) != null &&
+                            !listValues.get(13).toString().equals(""))
+                        manageAlarms.setAlarm(getApplicationContext(), listValues.get(13).toString(),
+                                "battery", listValues.get(0).toString());
+
+                    if (!listValues.get(14).toString().isEmpty() && listValues.get(14) != null &&
+                            !listValues.get(14).toString().equals(""))
+                        manageAlarms.setAlarm(getApplicationContext(), listValues.get(14).toString(),
+                                "antifreeze", listValues.get(0).toString());
+
+                    if (!listValues.get(15).toString().isEmpty() && listValues.get(15) != null &&
+                            !listValues.get(15).toString().equals(""))
+                        manageAlarms.setAlarm(getApplicationContext(), listValues.get(15).toString(),
+                                "tire", listValues.get(0).toString());
+
+                    if (!listValues.get(16).toString().isEmpty() && listValues.get(16) != null &&
+                            !listValues.get(16).toString().equals(""))
+                        manageAlarms.setAlarm(getApplicationContext(), listValues.get(8).toString(),
+                                "wiper", listValues.get(0).toString());
 
 /*                    Log.d("DebugAlarm", "The rate is " +Integer.getInteger(rate));
                     Log.d("DebugAlarm", Boolean.toString(rate.isEmpty()));*/
@@ -324,17 +393,21 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
                         View view = super.getView(position, convertView, parent);
+                        //firstPosition = m_listview.getFirstVisiblePosition();
                         TextView text1 = (TextView) view.findViewById(android.R.id.text1);
                         TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
                         text1.setText(listFields.get(position).toString());
                         text2.setText(listValuesDisplay.get(position).toString());
                         //m_listview.smoothScrollToPosition(position);
+
+
                         return view;
                     }
                 };
 
         m_listview.setAdapter(adapter);
+        //m_listview.setSelection(firstPosition);
 
         m_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
@@ -367,6 +440,30 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 8:
                         showStartDateDialog(view, 8);
+                        break;
+                    case 9:
+                        showStartDateDialog(view, 9);
+                        break;
+                    case 10:
+                        showStartDateDialog(view, 10);
+                        break;
+                    case 11:
+                        showStartDateDialog(view, 11);
+                        break;
+                    case 12:
+                        showStartDateDialog(view, 12);
+                        break;
+                    case 13:
+                        showStartDateDialog(view, 13);
+                        break;
+                    case 14:
+                        showStartDateDialog(view, 14);
+                        break;
+                    case 15:
+                        showStartDateDialog(view, 15);
+                        break;
+                    case 16:
+                        showStartDateDialog(view, 16);
                         break;
 
 
@@ -486,8 +583,6 @@ public class MainActivity extends BaseActivity {
     }
 
 
-
-
     public class StartDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
         Calendar c = Calendar.getInstance();
         int startYear = c.get(Calendar.YEAR);
@@ -522,27 +617,52 @@ public class MainActivity extends BaseActivity {
         public void updateStartDateDisplay() {
             int startMonth2 = startMonth + 1;
             listValues.remove(position);
-            String finalDate=startDay + "/" + startMonth2 + "/" + startYear;
+            String finalDate = startDay + "/" + startMonth2 + "/" + startYear;
             //listValues.add(position, finalDate);
-            if (position==3){
-                listValues.add(3,finalDate);
+            if (position == 3) {
+                listValues.add(3, finalDate);
                 listValuesDisplay.add(3, finalDate);
-            }else if (position==4){
-                listValues.add(4,finalDate);
+            } else if (position == 4) {
+                listValues.add(4, finalDate);
                 listValuesDisplay.add(4, finalDate);
-            }else if(position==5){
-                listValues.add(5,finalDate);
+            } else if (position == 5) {
+                listValues.add(5, finalDate);
                 listValuesDisplay.add(5, finalDate);
-            }else if(position==6){
-                listValues.add(6,finalDate);
+            } else if (position == 6) {
+                listValues.add(6, finalDate);
                 listValuesDisplay.add(6, finalDate);
-            }else if (position==7){
-                listValues.add(7,finalDate);
+            } else if (position == 7) {
+                listValues.add(7, finalDate);
                 listValuesDisplay.add(7, finalDate);
-            }else if (position==8){
-                listValues.add(8,finalDate);
+            } else if (position == 8) {
+                listValues.add(8, finalDate);
                 listValuesDisplay.add(8, finalDate);
+            } else if (position == 9) {
+                listValues.add(9, finalDate);
+                listValuesDisplay.add(9, finalDate);
+            } else if (position == 10) {
+                listValues.add(10, finalDate);
+                listValuesDisplay.add(10, finalDate);
+            } else if (position == 11) {
+                listValues.add(11, finalDate);
+                listValuesDisplay.add(11, finalDate);
+            } else if (position == 12) {
+                listValues.add(12, finalDate);
+                listValuesDisplay.add(12, finalDate);
+            } else if (position == 13) {
+                listValues.add(13, finalDate);
+                listValuesDisplay.add(13, finalDate);
+            } else if (position == 14) {
+                listValues.add(14, finalDate);
+                listValuesDisplay.add(14, finalDate);
+            } else if (position == 15) {
+                listValues.add(15, finalDate);
+                listValuesDisplay.add(15, finalDate);
+            } else if (position == 16) {
+                listValues.add(16, finalDate);
+                listValuesDisplay.add(16, finalDate);
             }
+
             updateView();
         }
     }
