@@ -140,6 +140,36 @@ public class ViewSingleCarActivity extends BaseActivity {
         else
             listValuesDisplay.add(10, listValues.get(10));
 
+        if (car.getEairfilter()==null || car.getEairfilter().equals("") || car.getEairfilter().equals(""))
+            listValuesDisplay.add(11, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(11, listValues.get(11));
+
+        if (car.getCairfilter()==null || car.getCairfilter().equals("") || car.getCairfilter().equals(""))
+            listValuesDisplay.add(12, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(12, listValues.get(12));
+
+        if (car.getBattery()==null || car.getBattery().equals("") || car.getBattery().equals(""))
+            listValuesDisplay.add(13, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(13, listValues.get(13));
+
+        if (car.getAntifreeze()==null || car.getAntifreeze().equals("") || car.getAntifreeze().equals(""))
+            listValuesDisplay.add(14, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(14, listValues.get(14));
+
+        if (car.getTire()==null || car.getTire().equals("") || car.getTire().equals(""))
+            listValuesDisplay.add(15, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(15, listValues.get(15));
+
+        if (car.getWiper()==null || car.getWiper().equals("") || car.getWiper().equals(""))
+            listValuesDisplay.add(16, getResources().getString(R.string.click_for_value));
+        else
+            listValuesDisplay.add(16, listValues.get(16));
+
         Button updateButton = (Button) findViewById(R.id.updateButton);
         Button deleteButton = (Button) findViewById(R.id.deleteButton);
 
@@ -219,7 +249,30 @@ public class ViewSingleCarActivity extends BaseActivity {
                     case 8:
                         showStartDateDialog(view, 8);
                         break;
-
+                    case 9:
+                        showStartDateDialog(view, 9);
+                        break;
+                    case 10:
+                        showStartDateDialog(view, 10);
+                        break;
+                    case 11:
+                        showStartDateDialog(view, 11);
+                        break;
+                    case 12:
+                        showStartDateDialog(view, 12);
+                        break;
+                    case 13:
+                        showStartDateDialog(view, 13);
+                        break;
+                    case 14:
+                        showStartDateDialog(view, 14);
+                        break;
+                    case 15:
+                        showStartDateDialog(view, 15);
+                        break;
+                    case 16:
+                        showStartDateDialog(view, 16);
+                        break;
 
                 }
             }
@@ -384,6 +437,22 @@ public class ViewSingleCarActivity extends BaseActivity {
                 car.setMedical(finalDate);
             }else if (position==8){
                 car.setRate(finalDate);
+            } else if (position == 9) {
+                car.setOil(finalDate);
+            } else if (position == 10) {
+                car.setParking(finalDate);
+            } else if (position == 11) {
+                car.setEairfilter(finalDate);
+            } else if (position == 12) {
+                car.setCairfilter(finalDate);
+            } else if (position == 13) {
+                car.setBattery(finalDate);
+            } else if (position == 14) {
+                car.setAntifreeze(finalDate);
+            } else if (position == 15) {
+                car.setTire(finalDate);
+            } else if (position == 16) {
+                car.setWiper(finalDate);
             }
             updateView();
         }
