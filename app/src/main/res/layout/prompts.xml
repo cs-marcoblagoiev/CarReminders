@@ -33,7 +33,7 @@
         android:inputType="text"
         android:layout_height="wrap_content"
         android:textColor="#000000"
-        android:text="balabla"
+        android:text=""
         android:cursorVisible="true">
 
         <requestFocus />

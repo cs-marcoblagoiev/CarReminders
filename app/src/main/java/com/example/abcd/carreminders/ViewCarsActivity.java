@@ -40,7 +40,7 @@ public class ViewCarsActivity extends BaseActivity {
        ListView m_listview = (ListView) findViewById(R.id.list);
 
         final ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text1, listCars){
+                new ArrayAdapter<String>(this, R.layout.simple_list_item_3, android.R.id.text1, listCars){
                     //overriding the method so we can use both text items
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
