@@ -14,7 +14,7 @@ import java.util.List;
 public class JCGSQLiteHelper extends SQLiteOpenHelper {
 
     // database version
-    private static final int database_VERSION = 2;
+    private static final int database_VERSION = 3;
     // database name
     public static final String DATABASE_NAME = "MyCarsDB";
     public static final String CARS_TABLE_NAME = "cars";
@@ -52,7 +52,7 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
         // SQL statement to create cars table
         String CREATE_CARS_TABLE = "CREATE TABLE cars ( " + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "licence text, brand text, usage text, insurance text, inspection text, tax text, " +
-                "fire text, medical text, rate text, oil text, eairfilter text, cairfilter text, " +
+                "fire text, medical text, rate text, oil text, parking text, eairfilter text, cairfilter text, " +
                 "battery text, antifreeze text, tire text, wiper text)";
         db.execSQL(CREATE_CARS_TABLE);
     }
@@ -92,6 +92,9 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
         // insert book
         db.insert(CARS_TABLE_NAME, null, values);
 
+        Log.d("debugv2", "in JSGSQO createCar");
+        Log.d("debugv2", values.toString());
+
         // close database transaction
         db.close();
     }
@@ -126,12 +129,13 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
         car.setBattery(cursor.getString(14));
         car.setAntifreeze(cursor.getString(15));
         car.setTire(cursor.getString(16));
-        car.setTire(cursor.getString(17));
+        car.setWiper(cursor.getString(17));
 
         return car;
     }
 
     public List getAllCars() {
+        Log.d("debugv2", "in JSGSQO getAllCars");
         List cars = new LinkedList();
 
         // select book query
@@ -163,7 +167,7 @@ public class JCGSQLiteHelper extends SQLiteOpenHelper {
                 car.setBattery(cursor.getString(14));
                 car.setAntifreeze(cursor.getString(15));
                 car.setTire(cursor.getString(16));
-                car.setTire(cursor.getString(17));
+                car.setWiper(cursor.getString(17));
 
                 // Add book to books
                 cars.add(car);

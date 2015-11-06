@@ -24,7 +24,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class ViewSingleCarActivity extends BaseActivity {
@@ -405,7 +404,7 @@ public class ViewSingleCarActivity extends BaseActivity {
             // TODO Auto-generated method stub
             // Use the current date as the default date in the picker
             DatePickerDialog dialog = new DatePickerDialog(ViewSingleCarActivity.this, this, startYear, startMonth, startDay);
-            dialog.getDatePicker().setMinDate(new Date().getTime());
+            dialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
             return dialog;
 
         }

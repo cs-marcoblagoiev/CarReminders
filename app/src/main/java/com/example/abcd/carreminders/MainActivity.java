@@ -23,7 +23,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends BaseActivity {
@@ -599,7 +598,7 @@ public class MainActivity extends BaseActivity {
             // TODO Auto-generated method stub
             // Use the current date as the default date in the picker
             DatePickerDialog dialog = new DatePickerDialog(MainActivity.this, this, startYear, startMonth, startDay);
-            dialog.getDatePicker().setMinDate(new Date().getTime());
+            dialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
             return dialog;
 
         }
