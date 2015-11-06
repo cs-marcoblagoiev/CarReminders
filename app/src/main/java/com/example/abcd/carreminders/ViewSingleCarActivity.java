@@ -135,6 +135,7 @@ public class ViewSingleCarActivity extends BaseActivity {
     }
 
     private void updateView() {
+        Log.d("ListView2", "Now in updateview");
         ListView m_listview = (ListView) findViewById(R.id.list);
 
         final ArrayAdapter<String> adapter =
