@@ -234,9 +234,12 @@ public class ManageAlarms {
                 Log.d("DebugAlarm", "calTest is " + calTest.toString());
 
                 //Random r=new Random();
-
+                Log.d("DebugAlarm2", String.valueOf(sharedpreferences.getBoolean("month", true)));
+                Log.d("DebugAlarm2", String.valueOf(cal2.after(calTest)));
                 if (sharedpreferences.getBoolean("month", true) && cal2.after(calTest)) {
                     //i=r.nextInt(100000);
+                    Log.d("DebugAlarm2", "Now in MONTH if");
+
                     alarmIntent.putExtra("period", "month");
                     pendingIntent = PendingIntent.getBroadcast(context, i++, alarmIntent, 0);
                     alarmManager.set(android.app.AlarmManager.RTC, cal2.getTimeInMillis(), pendingIntent);
@@ -246,6 +249,7 @@ public class ManageAlarms {
 
                 if (sharedpreferences.getBoolean("week", true) && cal3.after(calTest)) {
                     //i=r.nextInt(100000);
+                    Log.d("DebugAlarm2", "Now in WEEK if");
                     alarmIntent.putExtra("period", "week");
                     pendingIntent = PendingIntent.getBroadcast(context, i++, alarmIntent, 0);
                     alarmManager.set(android.app.AlarmManager.RTC, cal3.getTimeInMillis(), pendingIntent);
@@ -255,6 +259,7 @@ public class ManageAlarms {
 
                 if (sharedpreferences.getBoolean("day", true) && cal4.after(calTest)) {
                     //i=r.nextInt(100000);
+                    Log.d("DebugAlarm2", "Now in DAY if");
                     alarmIntent.putExtra("period", "day");
                     pendingIntent = PendingIntent.getBroadcast(context, i++, alarmIntent, 0);
                     alarmManager.set(android.app.AlarmManager.RTC, cal4.getTimeInMillis(), pendingIntent);
