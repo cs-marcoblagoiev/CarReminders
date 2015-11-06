@@ -130,6 +130,8 @@ public class ManageAlarms {
             stringsList.add(car.toString());
         }
 
+        Log.d("DebugAlarm", "---------------------------------------------------------------");
+
         Log.d("DebugAlarm", "The list is: " + list.toString());
         Log.d("DebugAlarm", "The list is: " + stringsList.toString());
         //Log.d("DebugAlarm", "The id is: " + list.get(0).toString());
@@ -138,12 +140,13 @@ public class ManageAlarms {
         String type="", date="";
 
         for (int i = 0; i < list.size(); i++) {
+            Log.d("DebugAlarm", "THE LIST SIZE IS " + list.size());
             Log.d("DebugAlarm", "The id inside the 'for' is: " + Integer.parseInt(list.get(i).toString()));
             Log.d("DebugAlarm", "The id inside the 'for' is: " + list.get(i).toString());
             Car car = db.findCar(Integer.parseInt(list.get(i).toString()));
             String licence = car.getLicence();
             //TODO change this is we add more fields
-            for (int j=0; j< 6; j++){
+            for (int j=0; j< 14; j++){
                 if (j==0){
                     type = "insurance";
                     date = car.getInsurance();
@@ -162,8 +165,32 @@ public class ManageAlarms {
                 } else if (j==5){
                     type = "rate";
                     date = car.getRate();
+                } else if (j==6){
+                    type = "oil";
+                    date = car.getRate();
+                } else if (j==7){
+                    type = "parking";
+                    date = car.getRate();
+                } else if (j==8){
+                    type = "eairfilter";
+                    date = car.getRate();
+                } else if (j==9){
+                    type = "cairfilter";
+                    date = car.getRate();
+                } else if (j==10){
+                    type = "bettery";
+                    date = car.getRate();
+                } else if (j==11){
+                    type = "antifreeze";
+                    date = car.getRate();
+                } else if (j==12){
+                    type = "tire";
+                    date = car.getRate();
+                } else if (j==13){
+                    type = "wiper";
+                    date = car.getRate();
                 }
-                i = sharedpreferences.getInt("lastId", 0);
+                i =  sharedpreferences.getInt("lastId", 0);
                 Log.d("DebugAlarm", "Getting lastId " + i);
                 android.app.AlarmManager alarmManager = (android.app.AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
                 Intent alarmIntent = new Intent(context, AlarmReceiver.class);
@@ -183,6 +210,8 @@ public class ManageAlarms {
                     Log.d("DebugAlarm", "!!!!!!!!!!!!!In exception ");
                 }
                 Log.d("DebugAlarm", "cal is " + cal.toString());
+
+                Log.d("DebugAlarm", ".................................................");
 
                 cal.set(Calendar.HOUR_OF_DAY, 10);
                 cal.set(Calendar.MINUTE, 00);

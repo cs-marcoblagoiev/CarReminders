@@ -80,6 +80,9 @@ public class ViewSettingsActivity extends BaseActivity {
 
                 //editor.putString("language", lang);
 
+                ManageAlarms ma = new ManageAlarms();
+                ma.deleteAlarms(getApplicationContext());
+
                 Toast.makeText(ViewSettingsActivity.this, R.string.saved_setting , Toast.LENGTH_LONG).show();
 
 
