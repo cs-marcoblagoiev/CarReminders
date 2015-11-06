@@ -124,7 +124,7 @@ public class ViewEventsActivity extends BaseActivity {
             return "#000000";
         } else if (days>=7) {
             return "#cc8400";
-        } else if (days>=1) {
+        } else if (days>=0) {
             return "#cc1010";
         } else return "#000000";
 
