@@ -63,7 +63,6 @@ public class ManageAlarms {
         //Random r=new Random();
 
         if (sharedpreferences.getBoolean("month", true) && cal2.after(calTest)) {
-            //i=r.nextInt(100000);
             alarmIntent.putExtra("period", "month");
             pendingIntent = PendingIntent.getBroadcast(context, i++, alarmIntent, 0);
             alarmManager.set(android.app.AlarmManager.RTC, cal2.getTimeInMillis(), pendingIntent);
@@ -72,7 +71,6 @@ public class ManageAlarms {
         }
 
         if (sharedpreferences.getBoolean("week", true) && cal3.after(calTest)) {
-            //i=r.nextInt(100000);
             alarmIntent.putExtra("period", "week");
             pendingIntent = PendingIntent.getBroadcast(context, i++, alarmIntent, 0);
             alarmManager.set(android.app.AlarmManager.RTC, cal3.getTimeInMillis(), pendingIntent);
@@ -81,7 +79,6 @@ public class ManageAlarms {
         }
 
         if (sharedpreferences.getBoolean("day", true) && cal4.after(calTest)) {
-            //i=r.nextInt(100000);
             alarmIntent.putExtra("period", "day");
             pendingIntent = PendingIntent.getBroadcast(context, i++, alarmIntent, 0);
             alarmManager.set(android.app.AlarmManager.RTC, cal4.getTimeInMillis(), pendingIntent);
@@ -119,6 +116,7 @@ public class ManageAlarms {
     }
 
     public void setAlarmForAllCars(Context context) {
+        int k=0;
         JCGSQLiteHelper db = new JCGSQLiteHelper(context);
         List<Car> list;
         // get all the cars
@@ -137,60 +135,64 @@ public class ManageAlarms {
         //Log.d("DebugAlarm", "The id is: " + list.get(0).toString());
         Log.d("DebugAlarm", "The size of the list is: " + list.size());
         sharedpreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        String type="", date="";
+        String type = "", date = "";
 
-        for (int i = 0; i < list.size(); i++) {
-            Log.d("DebugAlarm", "THE LIST SIZE IS " + list.size());
-            Log.d("DebugAlarm", "The id inside the 'for' is: " + Integer.parseInt(list.get(i).toString()));
-            Log.d("DebugAlarm", "The id inside the 'for' is: " + list.get(i).toString());
-            Car car = db.findCar(Integer.parseInt(list.get(i).toString()));
+        for (int l = 0; l < list.size(); l++) {
+            Log.d("DebugAlarm2", "THE LIST SIZE IS " + list.size());
+            //Log.d("DebugAlarm", "The id inside the 'for' is: " + Integer.parseInt(list.get(i).toString()));
+            //Log.d("DebugAlarm", "The id inside the 'for' is: " + list.get(i).toString());
+            Log.d("DebugAlarm2", "The i is " + i);
+            Car car = db.findCar(Integer.parseInt(list.get(l).toString()));
             String licence = car.getLicence();
             //TODO change this is we add more fields
-            for (int j=0; j< 14; j++){
-                if (j==0){
+            for (int j = 0; j < 14; j++) {
+                Log.d("DebugAlarm2", "I've been in this for for " + k++ + " times");
+                Log.d("DebugAlarm2", "The j is " + j);
+                if (j == 0) {
                     type = "insurance";
                     date = car.getInsurance();
-                } else if (j==1){
+                } else if (j == 1) {
                     type = "inspection";
                     date = car.getInspection();
-                } else if (j==2){
+                } else if (j == 2) {
                     type = "tax";
                     date = car.getTax();
-                } else if (j==3){
+                } else if (j == 3) {
                     type = "fire";
                     date = car.getFire();
-                } else if (j==4){
+                } else if (j == 4) {
                     type = "medical";
                     date = car.getMedical();
-                } else if (j==5){
+                } else if (j == 5) {
                     type = "rate";
                     date = car.getRate();
-                } else if (j==6){
+                } else if (j == 6) {
                     type = "oil";
-                    date = car.getRate();
-                } else if (j==7){
+                    date = car.getOil();
+                } else if (j == 7) {
                     type = "parking";
-                    date = car.getRate();
-                } else if (j==8){
+                    date = car.getParking();
+                } else if (j == 8) {
                     type = "eairfilter";
-                    date = car.getRate();
-                } else if (j==9){
+                    date = car.getEairfilter();
+                } else if (j == 9) {
                     type = "cairfilter";
-                    date = car.getRate();
-                } else if (j==10){
-                    type = "bettery";
-                    date = car.getRate();
-                } else if (j==11){
+                    date = car.getCairfilter();
+                } else if (j == 10) {
+                    type = "battery";
+                    date = car.getBattery();
+                } else if (j == 11) {
                     type = "antifreeze";
-                    date = car.getRate();
-                } else if (j==12){
+                    date = car.getAntifreeze();
+                } else if (j == 12) {
                     type = "tire";
-                    date = car.getRate();
-                } else if (j==13){
+                    date = car.getTire();
+                } else if (j == 13) {
                     type = "wiper";
-                    date = car.getRate();
+                    date = car.getWiper();
                 }
-                i =  sharedpreferences.getInt("lastId", 0);
+
+                i = sharedpreferences.getInt("lastId", 0);
                 Log.d("DebugAlarm", "Getting lastId " + i);
                 android.app.AlarmManager alarmManager = (android.app.AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
                 Intent alarmIntent = new Intent(context, AlarmReceiver.class);
@@ -270,9 +272,8 @@ public class ManageAlarms {
 
             }
 
-            }
         }
-
+    }
 
 
 }
