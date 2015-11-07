@@ -41,7 +41,7 @@
 
     <string name="sharing_string">Hey check out my app at: https://play.google.com/"</string>
     <string name="toast_car_added">Masina adaugata in baza de date</string>
-    <string name="saved_setting">Salvari setate</string>
+    <string name="saved_setting">Setari salvate</string>
     <string name="toast_car_updated">Masina actualizata</string>
     <string name="toast_car_deleted">Masina stearsa</string>
 

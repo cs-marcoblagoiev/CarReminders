@@ -54,6 +54,7 @@ public class ViewEventsActivity extends BaseActivity {
             eventList.add(new Event(car.getLicence(), car.getParking(), getResources().getString(R.string.parking)));
             eventList.add(new Event(car.getLicence(), car.getEairfilter(), getResources().getString(R.string.eairfilter)));
             eventList.add(new Event(car.getLicence(), car.getCairfilter(), getResources().getString(R.string.cairfilter)));
+            eventList.add(new Event(car.getLicence(), car.getBattery(), getResources().getString(R.string.battery)));
             eventList.add(new Event(car.getLicence(), car.getAntifreeze(), getResources().getString(R.string.antifreeze)));
             eventList.add(new Event(car.getLicence(), car.getTire(), getResources().getString(R.string.tire)));
             eventList.add(new Event(car.getLicence(), car.getWiper(), getResources().getString(R.string.wiper)));

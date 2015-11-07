@@ -179,6 +179,11 @@ public class ViewSingleCarActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 db.updateCar(car);
+
+                //setting all the alarms
+                ManageAlarms manageAlarms = new ManageAlarms();
+
+                manageAlarms.deleteAlarms(getApplicationContext());
                 Toast.makeText(getApplicationContext(), R.string.toast_car_updated, Toast.LENGTH_LONG).show();
             }
         });
@@ -405,12 +410,13 @@ public class ViewSingleCarActivity extends BaseActivity {
     }
 
 
-    Calendar c = Calendar.getInstance();
-    int startYear = c.get(Calendar.YEAR);
-    int startMonth = c.get(Calendar.MONTH);
-    int startDay = c.get(Calendar.DAY_OF_MONTH);
+
 
     public class StartDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+        Calendar c = Calendar.getInstance();
+        int startYear = c.get(Calendar.YEAR);
+        int startMonth = c.get(Calendar.MONTH);
+        int startDay = c.get(Calendar.DAY_OF_MONTH);
 
         int position;
 
@@ -445,32 +451,46 @@ public class ViewSingleCarActivity extends BaseActivity {
             listValues.add(position, finalDate);
             if (position==3){
                 car.setInsurance(finalDate);
+                listValuesDisplay.add(3, finalDate);
             }else if (position==4){
                 car.setInspection(finalDate);
+                listValuesDisplay.add(4, finalDate);
             }else if(position==5){
                 car.setTax(finalDate);
+                listValuesDisplay.add(5, finalDate);
             }else if(position==6){
                 car.setFire(finalDate);
+                listValuesDisplay.add(6, finalDate);
             }else if (position==7){
                 car.setMedical(finalDate);
+                listValuesDisplay.add(7, finalDate);
             }else if (position==8){
                 car.setRate(finalDate);
+                listValuesDisplay.add(8, finalDate);
             } else if (position == 9) {
                 car.setOil(finalDate);
+                listValuesDisplay.add(9, finalDate);
             } else if (position == 10) {
                 car.setParking(finalDate);
+                listValuesDisplay.add(10, finalDate);
             } else if (position == 11) {
                 car.setEairfilter(finalDate);
+                listValuesDisplay.add(11, finalDate);
             } else if (position == 12) {
                 car.setCairfilter(finalDate);
+                listValuesDisplay.add(12, finalDate);
             } else if (position == 13) {
                 car.setBattery(finalDate);
+                listValuesDisplay.add(13, finalDate);
             } else if (position == 14) {
                 car.setAntifreeze(finalDate);
+                listValuesDisplay.add(14, finalDate);
             } else if (position == 15) {
                 car.setTire(finalDate);
+                listValuesDisplay.add(15, finalDate);
             } else if (position == 16) {
                 car.setWiper(finalDate);
+                listValuesDisplay.add(16, finalDate);
             }
             updateView();
         }
