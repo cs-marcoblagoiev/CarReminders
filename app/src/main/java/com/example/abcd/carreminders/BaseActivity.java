@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -50,7 +51,7 @@ public class BaseActivity extends AppCompatActivity
 
                 // if it was the first app start
                 if(isFirstStart) {
-                    drawer.openDrawer(mDrawerList);
+                    drawer.openDrawer(Gravity.LEFT);
                     SharedPreferences.Editor e = sp.edit();
                     // we save the value "false", indicating that it is no longer the first appstart
                     e.putBoolean("key", false);
