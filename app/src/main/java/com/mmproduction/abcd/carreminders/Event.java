@@ -1,4 +1,4 @@
-package com.example.abcd.carreminders;
+package com.mmproduction.abcd.carreminders;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

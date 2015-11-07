@@ -1,4 +1,4 @@
-package com.example.abcd.carreminders;
+package com.mmproduction.abcd.carreminders;
 
 import android.graphics.Color;
 import android.os.Bundle;

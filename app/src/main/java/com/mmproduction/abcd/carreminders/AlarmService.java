@@ -1,4 +1,4 @@
-package com.example.abcd.carreminders;
+package com.mmproduction.abcd.carreminders;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -50,6 +50,7 @@ public class AlarmService extends Service {
         builder.setContentText(licence + "'s " + type + " is going to expire in one " + period);
         builder.setSmallIcon(R.drawable.menuicon);
         builder.setContentIntent(pendingIntent);
+
 
         Log.d("DebugAlarm", "IN ALARMSERVICE " + licence + "'s " + type + " is going to expire in one " + period);
 

@@ -1,4 +1,4 @@
-package com.example.abcd.carreminders;
+package com.mmproduction.abcd.carreminders;
 
 import android.app.PendingIntent;
 import android.content.Context;
@@ -240,7 +240,6 @@ public class ManageAlarms {
                     //Log.d("DebugAlarm3", String.valueOf(sharedpreferences.getBoolean("month", true)));
                     Log.d("DebugAlarm3", String.valueOf(cal2.after(calTest)));
                     if (sharedpreferences.getBoolean("month", true) && cal2.after(calTest)) {
-                        //i=r.nextInt(100000);
                         Log.d("DebugAlarm3", "Now in MONTH if, setting the alarm for "+ type + " with the id " + i);
                         Log.d("DebugAlarm3", "The l is "+ l);
 
@@ -252,7 +251,6 @@ public class ManageAlarms {
                     }
 
                     if (sharedpreferences.getBoolean("week", true) && cal3.after(calTest)) {
-                        //i=r.nextInt(100000);
                         Log.d("DebugAlarm3", "Now in WEEK if, setting the alarm for "+ type+ " with the id " + i);
                         Log.d("DebugAlarm3", "The l is "+ l);
                         alarmIntent.putExtra("period", "week");
@@ -263,7 +261,6 @@ public class ManageAlarms {
                     }
 
                     if (sharedpreferences.getBoolean("day", true) && cal4.after(calTest)) {
-                        //i=r.nextInt(100000);
                         Log.d("DebugAlarm3", "Now in DAY if, setting the alarm for "+ type+ " with the id " + i);
                         Log.d("DebugAlarm3", "The l is "+ l);
                         alarmIntent.putExtra("period", "day");

@@ -1,4 +1,4 @@
-package com.example.abcd.carreminders;
+package com.mmproduction.abcd.carreminders;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
