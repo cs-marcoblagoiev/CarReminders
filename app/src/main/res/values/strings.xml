@@ -48,6 +48,8 @@
     <string name="settings_text_language">Select the language:</string>
     <string name="language_english">English</string>
     <string name="language_romanian">Romanian</string>
+    <string name="language_german">German</string>
+    <string name="language_french">French</string>
 
     <string name="sidebar_add">Add a new car</string>
     <string name="sidebar_view_cars">View your cars</string>

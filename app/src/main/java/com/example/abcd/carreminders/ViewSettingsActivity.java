@@ -73,8 +73,11 @@ public class ViewSettingsActivity extends BaseActivity {
                 String lang = "en";
                 if (selectedRadioButton.getId() == R.id.radioButtonEnglish){
                     setLocale("en");
-                }
-                else if (selectedRadioButton.getId() ==  R.id.radioButtonRomanian){
+                } else if (selectedRadioButton.getId() ==  R.id.radioButtonGerman) {
+                    setLocale("de");
+                } else if (selectedRadioButton.getId() ==  R.id.radioButtonFrench) {
+                    setLocale("fr");
+                } else if (selectedRadioButton.getId() ==  R.id.radioButtonRomanian){
                     setLocale("ro");
                 }
 

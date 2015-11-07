@@ -48,6 +48,8 @@
     <string name="settings_text_language">Alegeti limba:</string>
     <string name="language_english">Engleza</string>
     <string name="language_romanian">Romana</string>
+    <string name="language_german">Germana</string>
+    <string name="language_french">Franceza</string>
 
     <string name="sidebar_add">Adaugati o masina</string>
     <string name="sidebar_view_cars">Vizualizati masinile</string>

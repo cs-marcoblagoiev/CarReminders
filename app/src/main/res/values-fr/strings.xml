@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">Car Reminders</string>
+
+    <string name="navigation_drawer_open">Ouvrir le tiroir de navigation</string>
+    <string name="navigation_drawer_close">Fermer le tiroir de navigation</string>
+
+    <string name="action_settings">Paramètres</string>
+
+    <string name="licence_plate">Plaque d\'immatriculation</string>
+    <string name="brand_model">Marque, modèle</string>
+    <string name="usage">Usage</string>
+    <string name="normal">Normal</string>
+    <string name="taxi">Taxi</string>
+    <string name="transport">Transport</string>
+    <string name="insurance">Assurance</string>
+    <string name="vehicle_inspection">Inspection du vehicle</string>
+    <string name="road_tax">Taxe routière</string>
+    <string name="fire_extinguisher">Extincteur d\'incendie</string>
+    <string name="medical_kit">Kit médical</string>
+    <string name="rate">Taux</string>
+    <string name="oil">Changement d\'huile</string>
+    <string name="parking">Pass Parking</string>
+    <string name="eairfilter">Filtre à air du moteur</string>
+    <string name="cairfilter">Filtre à air de la cabine</string>
+    <string name="battery">Batterie</string>
+    <string name="antifreeze">Antigel</string>
+    <string name="tire">Rotation des pneus</string>
+    <string name="wiper">Essuie-glace</string>
+
+    <string name="add_button">Ajouter une voiture</string>
+    <string name="update_button">Mettre à jour la voiture</string>
+    <string name="delete_button">Supprimer la voiture</string>
+
+    <string name="promptText">Saissisez la nouvelle valeur:</string>
+
+    <string name="settings_text">Sélectionnez quand vous souhaitez recevoir des notifications:</string>
+    <string name="checkbox_one">Un mois avant la date d\'expiration</string>
+    <string name="checkbox_two">Une semaine avant la date d\'expiration</string>
+    <string name="checkbox_three">Un jour avant la date d\'expiration</string>
+    <string name="save_settings">Enregistrer le réglage</string>
+
+    <string name="sharing_string">Hey check out my app at: https://play.google.com/"</string>
+    <string name="toast_car_added">Voiture ajoutée à la base de données</string>
+    <string name="saved_setting">Paramètres enregistrés</string>
+    <string name="toast_car_updated">Voiture mise à jour</string>
+    <string name="toast_car_deleted">Voiture supprimée</string>
+
+    <string name="settings_text_language">Sélectionnez la langue:</string>
+    <string name="language_english">Anglais</string>
+    <string name="language_romanian">Roumain</string>
+
+    <string name="sidebar_add">Ajouter une nouvelle voiture</string>
+    <string name="sidebar_view_cars">Voir vos voitures</string>
+    <string name="sidebar_view_events">Voir les événements futurs</string>
+    <string name="sidebar_settings">Afficher les paramètres</string>
+    <string name="sidebar_share_1">Partagez Car Reminders!</string>
+    <string name="sidebar_share_2">Partager</string>
+
+    <string name="click_for_value">Cliquez pour modifier</string>
+
+
+</resources>

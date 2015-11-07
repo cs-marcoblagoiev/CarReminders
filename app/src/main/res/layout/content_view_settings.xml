@@ -63,6 +63,22 @@
             android:text="@string/language_english" />
 
         <RadioButton
+            android:id="@+id/radioButtonFrench"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/franceicon"
+            android:text="@string/language_french" />
+
+        <RadioButton
+            android:id="@+id/radioButtonGerman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/germanicon"
+            android:text="@string/language_german" />
+
+        <RadioButton
             android:id="@+id/radioButtonRomanian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
