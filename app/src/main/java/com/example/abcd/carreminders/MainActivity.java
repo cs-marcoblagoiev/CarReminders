@@ -216,6 +216,8 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         super.onCreateDrawer(savedInstanceState);
 
+
+
         listFields.add(0, getResources().getString(R.string.licence_plate));
         listFields.add(1, getResources().getString(R.string.brand_model));
         listFields.add(2, getResources().getString(R.string.usage));
