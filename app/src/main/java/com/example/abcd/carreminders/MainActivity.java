@@ -3,13 +3,16 @@ package com.example.abcd.carreminders;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -478,7 +481,7 @@ public class MainActivity extends BaseActivity {
         // Set up the input
         final EditText input = new EditText(getApplicationContext());
         // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        //input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
         input.setTextColor(Color.parseColor("#000000"));
         input.setPadding(20, 10, 20, 10);
         builder.setView(input);
@@ -493,16 +496,23 @@ public class MainActivity extends BaseActivity {
                 listValues.add(0, input.getText().toString());
                 listValuesDisplay.add(0, input.getText().toString());
                 //car.setLicence(input.getText().toString());
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
                 dialog.cancel();
             }
         });
 
         builder.show();
+        input.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
 
     public void changeBrand() {
@@ -513,9 +523,9 @@ public class MainActivity extends BaseActivity {
         final EditText input = new EditText(getApplicationContext());
         // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
         //input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        //input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
         input.setTextColor(Color.parseColor("#000000"));
-        input.setPadding(20,10,20,10);
+        input.setPadding(20, 10, 20, 10);
         builder.setView(input);
 
 
@@ -529,16 +539,23 @@ public class MainActivity extends BaseActivity {
                 listValues.add(1, input.getText().toString());
                 listValuesDisplay.add(1, input.getText().toString());
                 //car.setBrand(input.getText().toString());
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(input.getWindowToken(), 0);
                 dialog.cancel();
             }
         });
 
         builder.show();
+        input.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
 
     public void editUsage() {
