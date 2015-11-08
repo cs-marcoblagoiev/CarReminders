@@ -133,11 +133,12 @@ public class BaseActivity extends AppCompatActivity
     }
 
     public void shareapp(){
-        Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT,
-                R.string.sharing_string);
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
         sendIntent.setType("text/plain");
+        sendIntent.setAction(android.content.Intent.ACTION_SEND);
+        sendIntent.putExtra(android.content.Intent.EXTRA_TEXT,
+                getResources().getString(R.string.sharing_string));
+
         startActivity(sendIntent);
     }
 
