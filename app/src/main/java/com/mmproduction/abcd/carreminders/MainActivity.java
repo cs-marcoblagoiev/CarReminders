@@ -281,8 +281,8 @@ public class MainActivity extends BaseActivity {
 
 
                 if (listValues.get(0) == null || listValues.get(0).toString().length() == 0) {
-                    Toast.makeText(getApplicationContext(), "Licence plate cannot be empty", Toast.LENGTH_LONG).show();
-                    Log.d("DEBUG", "Licence plate empty");
+                    Toast.makeText(getApplicationContext(), "License plate cannot be empty", Toast.LENGTH_LONG).show();
+                    Log.d("DEBUG", "License plate empty");
 /*                    Log.d("DEBUG", "licencePlate" + licencePlate.toString());
                     Log.d("DEBUG", "editTextLicencePlate" + editTextLicencePlate.getText().toString());*/
                 } else if (listValues.get(1) == null || listValues.get(1).toString().length() == 0) {
@@ -478,7 +478,7 @@ public class MainActivity extends BaseActivity {
 
     private void changeLicencePlate() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Licence Plate");
+        builder.setTitle("License Plate");
 
         // Set up the input
         final EditText input = new EditText(getApplicationContext());

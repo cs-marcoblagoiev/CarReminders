@@ -288,7 +288,7 @@ public class ViewSingleCarActivity extends BaseActivity {
 
     private void changeLicencePlate() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewSingleCarActivity.this);
-        builder.setTitle("Licence Plate");
+        builder.setTitle("License Plate");
 
         // Set up the input
         final EditText input = new EditText(getApplicationContext());
