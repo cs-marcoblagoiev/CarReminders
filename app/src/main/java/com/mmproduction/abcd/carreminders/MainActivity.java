@@ -582,11 +582,12 @@ public class MainActivity extends BaseActivity {
 
                 // find the radiobutton by returned id
                 RadioButton selectedRadioButton = (RadioButton) dialog.findViewById(selectedId);
-
-                listValues.set(2, selectedRadioButton.getText().toString());
-                listValuesDisplay.set(2, selectedRadioButton.getText().toString());
-                //car.setUsage(selectedRadioButton.getText().toString());
-                Log.d("DEBUG", selectedRadioButton.getText().toString());
+                if (selectedRadioButton!=null) {
+                    listValues.set(2, selectedRadioButton.getText().toString());
+                    listValuesDisplay.set(2, selectedRadioButton.getText().toString());
+                    //car.setUsage(selectedRadioButton.getText().toString());
+                    Log.d("DEBUG", selectedRadioButton.getText().toString());
+                }
                 updateView();
                 dialog.cancel();
             }
