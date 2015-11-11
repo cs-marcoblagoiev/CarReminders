@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+//todo debug wtf is going on with the menu button
 public class ViewSettingsActivity extends BaseActivity {
 
     SharedPreferences sharedpreferences;

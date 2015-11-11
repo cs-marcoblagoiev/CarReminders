@@ -192,6 +192,7 @@ public class ViewSingleCarActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 //todo return to the old view
+                //todo add a confir button
                 db.deleteCar(car);
                 ManageAlarms ma = new ManageAlarms();
                 ma.deleteAlarms(getApplicationContext());
