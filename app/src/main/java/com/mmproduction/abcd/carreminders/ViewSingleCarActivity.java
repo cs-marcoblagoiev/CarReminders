@@ -296,6 +296,7 @@ public class ViewSingleCarActivity extends BaseActivity {
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
         input.setTextColor(Color.parseColor("#000000"));
         input.setPadding(20, 10, 20, 10);
+        input.setBackgroundColor(Color.parseColor("#f2f2f2"));
         builder.setView(input);
 
         // Set up the buttons
@@ -336,7 +337,8 @@ public class ViewSingleCarActivity extends BaseActivity {
         //input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
         input.setTextColor(Color.parseColor("#000000"));
-        input.setPadding(20,10,20,10);
+        input.setPadding(20, 10, 20, 10);
+        input.setBackgroundColor(Color.parseColor("#f2f2f2"));
         builder.setView(input);
 
 
