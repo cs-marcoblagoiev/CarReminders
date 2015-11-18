@@ -193,10 +193,42 @@ public class ViewSingleCarActivity extends BaseActivity {
             public void onClick(View v) {
                 //todo return to the old view
                 //todo add a confir button
-                db.deleteCar(car);
-                ManageAlarms ma = new ManageAlarms();
-                ma.deleteAlarms(getApplicationContext());
-                Toast.makeText(getApplicationContext(), R.string.toast_car_deleted, Toast.LENGTH_LONG).show();
+
+                AlertDialog myQuittingDialogBox =new AlertDialog.Builder(ViewSingleCarActivity.this)
+                        //set message, title, and icon
+                        .setTitle("Delete")
+                        .setMessage("Are you sure?")
+
+
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                //your deleting code
+                                db.deleteCar(car);
+                                ManageAlarms ma = new ManageAlarms();
+                                ma.deleteAlarms(getApplicationContext());
+                                Toast.makeText(getApplicationContext(), R.string.toast_car_deleted, Toast.LENGTH_LONG).show();
+
+                                dialog.dismiss();
+                            }
+
+                        })
+
+
+
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .create();
+
+                myQuittingDialogBox.show();
+
+
+
 
             }
         });
