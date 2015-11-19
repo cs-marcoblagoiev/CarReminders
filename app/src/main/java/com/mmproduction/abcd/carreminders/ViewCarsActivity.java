@@ -60,7 +60,7 @@ public class ViewCarsActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Log.d("DEBUG", "adapter: " + String.valueOf(adapter.getItem(position)));
-                int idOfCar=Integer.parseInt(String.valueOf(adapter.getItem(position)));
+                int idOfCar = Integer.parseInt(String.valueOf(adapter.getItem(position)));
 
                 Car car = new Car();
                 car.setID(idOfCar);
@@ -72,6 +72,7 @@ public class ViewCarsActivity extends BaseActivity {
                 finish();
             }
         });
+
 
     }
 

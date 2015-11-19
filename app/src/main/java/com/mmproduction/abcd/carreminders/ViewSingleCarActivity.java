@@ -240,6 +240,11 @@ public class ViewSingleCarActivity extends BaseActivity {
         Log.d("ListView2", "Now in updateview");
         ListView m_listview = (ListView) findViewById(R.id.list);
 
+        //used to restore the scroll position
+        int index = m_listview.getFirstVisiblePosition();
+        View v = m_listview.getChildAt(0);
+        int top = (v == null) ? 0 : (v.getTop() - m_listview.getPaddingTop());
+
         final ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(this, R.layout.simple_list_item_3, android.R.id.text1, listFields) {
                     //overriding the method so we can use both text items
@@ -317,6 +322,8 @@ public class ViewSingleCarActivity extends BaseActivity {
                 }
             }
         });
+
+        m_listview.setSelectionFromTop(index, top);
     }
 
     private void changeLicencePlate() {
